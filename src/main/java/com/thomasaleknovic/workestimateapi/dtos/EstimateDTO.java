@@ -1,9 +1,7 @@
 package com.thomasaleknovic.workestimateapi.dtos;
 
-import java.sql.Date;
+import java.util.List;
 
-import com.thomasaleknovic.workestimateapi.models.EstimateData;
-
-public record EstimateDTO(String estimateName, Date createdAt, EstimateData estimateData) {
+public record EstimateDTO(String estimateName, String customerName, Long cpf, String address, Long phone, List<String> jobDetails) {
     
 }
