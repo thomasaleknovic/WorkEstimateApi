@@ -3,8 +3,13 @@ package com.thomasaleknovic.workestimateapi.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
+
+import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 import java.util.Date;
 import java.util.UUID;
@@ -16,19 +21,19 @@ import java.util.UUID;
 public class Estimate {
 
     @Id
-    @GeneratedValue
-    public UUID estimateId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID estimateId;
 
-    public String estimateName;
+    private String estimateName;
 
-    public Date createdAt;
+    private Date createdAt;
 
-    public EstimateData estimateData;
+    private EstimateData estimateData;
 
     public Estimate(EstimateDTO data) {
         this.estimateName = data.estimateName();
         this.createdAt = data.createdAt();
-        this.estimateData - data.estimateData();
+        this.estimateData = data.estimateData();
     }
 
 }
