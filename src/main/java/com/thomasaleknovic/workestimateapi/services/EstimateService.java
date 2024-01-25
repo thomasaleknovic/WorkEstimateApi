@@ -1,5 +1,8 @@
 package com.thomasaleknovic.workestimateapi.services;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,10 @@ public class EstimateService {
     private EstimateRepository estimateRepository;
     
      
+    public List<Estimate> findAllEstimates(){
+        return estimateRepository.findAll();
+    }
+
     public Estimate createEstimate (EstimateDTO data) {
         Estimate estimate = new Estimate(data);
         return estimateRepository.save(estimate);
