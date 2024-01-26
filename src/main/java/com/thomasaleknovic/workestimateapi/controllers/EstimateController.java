@@ -68,4 +68,9 @@ public class EstimateController {
         return ResponseEntity.noContent().build();
     } 
 
+    @DeleteMapping("/{id}/edit/details")
+    public ResponseEntity<Estimate> deleteJobDetail (@PathVariable UUID id, @RequestBody UUID jobDetailId ) {
+        return ResponseEntity.ok(estimateService.deleteJobDetailInfo(id, jobDetailId));
+       
+    } 
 }

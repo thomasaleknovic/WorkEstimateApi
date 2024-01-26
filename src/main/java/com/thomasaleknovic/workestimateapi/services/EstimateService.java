@@ -72,5 +72,11 @@ public class EstimateService {
         
     }
 
+    public Estimate deleteJobDetailInfo (UUID estimateId, UUID jobDetailId ) {
+        Estimate estimate = estimateRepository.findById(estimateId).orElseThrow(EstimateNotFoundException::new);
+        estimate.getJobDetails().removeIf(item -> item.getId().equals(jobDetailId));
+        return estimateRepository.save(estimate);
+    }
+
     
 }
