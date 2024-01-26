@@ -3,32 +3,57 @@ package com.thomasaleknovic.workestimateapi.models;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
-import java.util.Date;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
+
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@Table(name = "Estimates")
 public class Estimate {
 
+    @JsonDeserialize
     @Id
-    @GeneratedValue
-    public UUID estimateId;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID estimateId;
 
-    public String estimateName;
+    private String estimateName;
 
-    public Date createdAt;
+    private Instant createdAt = Instant.now() ;
 
-    public EstimateData estimateData;
+    private String customerName;
+
+    private Long cpf;
+
+    private String address;
+
+    private Long phone;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<JobDetails> jobDetails;
 
     public Estimate(EstimateDTO data) {
         this.estimateName = data.estimateName();
-        this.createdAt = data.createdAt();
-        this.estimateData - data.estimateData();
+        this.customerName = data.customerName();
+        this.cpf = data.cpf();
+        this.address = data.address();
+        this.phone = data.phone();
+        this.jobDetails = data.jobDetails();
     }
 
 }
