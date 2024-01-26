@@ -65,4 +65,12 @@ public class EstimateService {
         return estimateRepository.save(estimate);
        
     }
+
+    public void deleteEstimate(UUID id) {
+        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        estimateRepository.delete(estimate);
+        
+    }
+
+    
 }

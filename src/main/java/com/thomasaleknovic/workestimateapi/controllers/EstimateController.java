@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,18 +29,18 @@ public class EstimateController {
         this.estimateService = estimateService;
     }
 
-
-    @GetMapping("/findall")
-    public ResponseEntity<List<Estimate>> listAllEstimates () {
-        return ResponseEntity.ok(estimateService.findAllEstimates());
-
-    }
-    @GetMapping("/find")
+    @GetMapping("")
     public ResponseEntity<Estimate> findEstimate (@RequestBody UUID id) {
         return ResponseEntity.ok(estimateService.findEstimate(id));
     }
     
-    @PostMapping("/create")
+    @GetMapping("/all")
+    public ResponseEntity<List<Estimate>> listAllEstimates () {
+        return ResponseEntity.ok(estimateService.findAllEstimates());
+
+    }
+   
+    @PostMapping("/new")
     public ResponseEntity<Estimate> createEstimate (@RequestBody EstimateDTO data) {
         return ResponseEntity.ok(estimateService.createEstimate(data));
     }
@@ -60,5 +61,11 @@ public class EstimateController {
 
         return ResponseEntity.ok(estimateService.updateJobDetailInfo(id, data));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteEstimate (@PathVariable UUID id) {
+        estimateService.deleteEstimate(id);
+        return ResponseEntity.noContent().build();
+    } 
 
 }
