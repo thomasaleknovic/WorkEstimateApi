@@ -4,20 +4,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
-
-import org.springframework.data.annotation.CreatedDate;
 
 @Getter
 @Setter
@@ -26,14 +27,14 @@ import org.springframework.data.annotation.CreatedDate;
 @Table(name = "Estimates")
 public class Estimate {
 
+    @JsonDeserialize
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID estimateId;
 
     private String estimateName;
 
-    @CreatedDate
-    private Date createdAt;
+    private Instant createdAt = Instant.now() ;
 
     private String customerName;
 
@@ -43,7 +44,8 @@ public class Estimate {
 
     private Long phone;
 
-    private List<String> jobDetails;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<JobDetails> jobDetails;
 
     public Estimate(EstimateDTO data) {
         this.estimateName = data.estimateName();
@@ -53,7 +55,5 @@ public class Estimate {
         this.phone = data.phone();
         this.jobDetails = data.jobDetails();
     }
-
-  
 
 }
