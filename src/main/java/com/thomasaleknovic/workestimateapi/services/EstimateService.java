@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
+import com.thomasaleknovic.workestimateapi.dtos.JobDetailsDTO;
 import com.thomasaleknovic.workestimateapi.exceptions.Estimate.EstimateNotFoundException;
 import com.thomasaleknovic.workestimateapi.models.Estimate;
+import com.thomasaleknovic.workestimateapi.models.JobDetails;
 import com.thomasaleknovic.workestimateapi.repository.EstimateRepository;
 
 @Service
@@ -32,5 +34,11 @@ public class EstimateService {
         Estimate estimate = new Estimate(data);
         return estimateRepository.save(estimate);
 
+    }
+
+    public Estimate addJobDetail (UUID id, JobDetailsDTO data) {
+        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        estimate.getJobDetails().add(new JobDetails(data));
+        return estimateRepository.save(estimate);
     }
 }
