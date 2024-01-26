@@ -2,6 +2,11 @@ package com.thomasaleknovic.workestimateapi.dtos;
 
 import java.util.List;
 
-public record EstimateDTO(String estimateName, String customerName, Long cpf, String address, Long phone, List<String> jobDetails) {
+import com.thomasaleknovic.workestimateapi.models.JobDetails;
+
+import jakarta.validation.constraints.NotNull;
+
+
+public record EstimateDTO(@NotNull String estimateName, @NotNull String customerName, Long cpf, @NotNull String address, Long phone, List<JobDetails> jobDetails) {
     
 }
