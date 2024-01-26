@@ -41,4 +41,15 @@ public class EstimateService {
         estimate.getJobDetails().add(new JobDetails(data));
         return estimateRepository.save(estimate);
     }
+
+    public Estimate updateEstimateInfo(UUID id, EstimateDTO data) {
+        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        estimate.setEstimateName(data.estimateName());
+        estimate.setCustomerName(data.customerName());
+        estimate.setCpf(data.cpf());
+        estimate.setAddress(data.address());
+        estimate.setPhone(data.phone());
+        return estimateRepository.save(estimate);
+       
+    }
 }

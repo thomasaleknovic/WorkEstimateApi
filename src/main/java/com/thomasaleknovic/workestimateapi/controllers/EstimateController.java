@@ -43,8 +43,13 @@ public class EstimateController {
     public ResponseEntity<Estimate> createEstimate (@RequestBody EstimateDTO data) {
         return ResponseEntity.ok(estimateService.createEstimate(data));
     }
+
+    @PutMapping("/{id}/edit")
+    public ResponseEntity<Estimate> updateEstimate (@PathVariable UUID id, @RequestBody EstimateDTO data) {
+        return ResponseEntity.ok(estimateService.updateEstimateInfo(id, data));
+    }
     
-    @PutMapping("/{id}/insert/details")
+    @PutMapping("/{id}/edit/insert/details")
     public ResponseEntity<Estimate> insertJobDetail (@PathVariable UUID id, @RequestBody JobDetailsDTO data) {
 
         return ResponseEntity.ok(estimateService.addJobDetail(id, data));
