@@ -19,6 +19,8 @@ public class EstimateService {
 
     @Autowired
     private EstimateRepository estimateRepository;
+
+ 
     
      
     public List<Estimate> findAllEstimates(){
@@ -40,6 +42,17 @@ public class EstimateService {
         Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
         estimate.getJobDetails().add(new JobDetails(data));
         return estimateRepository.save(estimate);
+    }
+
+    public Estimate updateJobDetailInfo (UUID id, JobDetailsDTO data) {
+        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        JobDetails jobDetails = estimate.getJobDetails().stream().filter(item -> item.getId().equals(data.id())).findFirst().orElseThrow(EstimateNotFoundException::new);
+        jobDetails.setTitle(data.title());
+        jobDetails.setDescription(data.description());
+        jobDetails.setPrice(data.price());
+        return estimateRepository.save(estimate);
+        
+
     }
 
     public Estimate updateEstimateInfo(UUID id, EstimateDTO data) {
