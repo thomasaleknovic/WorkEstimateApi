@@ -32,7 +32,7 @@ public class EstimateServiceTest {
     void testFindAllEstimatesSuccess() {
     
 
-        when(estimateRepository.findAll()).thenReturn()
+//        when(estimateRepository.findAll()).thenReturn();
     }
 
     @Test

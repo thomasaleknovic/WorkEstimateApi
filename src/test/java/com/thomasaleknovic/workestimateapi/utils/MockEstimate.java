@@ -8,15 +8,14 @@ import com.thomasaleknovic.workestimateapi.models.Estimate;
 
 public class MockEstimate {
     
-    static String estimateName;
-
-    static String customerName;
-    static Long cpf;
-    static String address;
-    static Long phone;
+    static String ESTIMATENAME;
+    static String CUSTOMERNAME;
+    static Long CPF;
+    static String ADDRESS;
+    static Long PHONE;
 
     static public EstimateDTO mockEstimateDTO () {
-        return new EstimateDTO(null, null, null, null, null, null)
+        return new EstimateDTO(ESTIMATENAME, CUSTOMERNAME, CPF, ADDRESS, PHONE, null);
     }
 
     static public Estimate mockEstimateEntity (EstimateDTO data){
