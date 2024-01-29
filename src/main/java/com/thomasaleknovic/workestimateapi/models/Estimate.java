@@ -16,6 +16,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,7 +46,7 @@ public class Estimate {
     private String phone;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<JobDetails> jobDetails;
+    private List<JobDetails> jobDetails = new ArrayList<>();
 
     public Estimate(EstimateDTO data) {
         this.estimateName = data.estimateName();
