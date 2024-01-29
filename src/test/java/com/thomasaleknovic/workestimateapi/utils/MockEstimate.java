@@ -15,11 +15,12 @@ public class MockEstimate {
    public static String PHONE = "(11) 933124133";
 
     public static EstimateDTO mockEstimateDTO () {
-        return new EstimateDTO(ESTIMATE_NAME, CUSTOMER_NAME, CPF, ADDRESS, PHONE, null);
+        return new EstimateDTO(ESTIMATE_NAME, CUSTOMER_NAME, CPF, ADDRESS, PHONE, new ArrayList<>());
+    
     }
 
     public static EstimateDTO updatedMockEstimateDTO () {
-        return new EstimateDTO("Orçamento atualizado", CUSTOMER_NAME, CPF, ADDRESS, PHONE, null);
+        return new EstimateDTO("Orçamento atualizado", CUSTOMER_NAME, CPF, ADDRESS, PHONE, new ArrayList<>());
     }
 
     public static Estimate mockEstimateEntity (){
