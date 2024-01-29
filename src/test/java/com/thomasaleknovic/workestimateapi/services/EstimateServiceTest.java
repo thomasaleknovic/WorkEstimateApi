@@ -20,6 +20,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
@@ -30,7 +31,7 @@ import com.thomasaleknovic.workestimateapi.models.JobDetails;
 import com.thomasaleknovic.workestimateapi.repository.EstimateRepository;
 
 
-
+@ActiveProfiles("test")
 public class EstimateServiceTest {
 
 
