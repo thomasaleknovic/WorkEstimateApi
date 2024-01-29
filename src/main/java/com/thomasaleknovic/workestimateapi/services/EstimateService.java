@@ -31,7 +31,7 @@ public class EstimateService {
 
     public Estimate findEstimate (UUID id) {
        return estimateRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-               "Estimate not found!"));
+               "Orçamento não encontrado!"));
        
     }
 
