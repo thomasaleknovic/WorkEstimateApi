@@ -38,11 +38,11 @@ public class Estimate {
 
     private String customerName;
 
-    private Long cpf;
+    private String cpf;
 
     private String address;
 
-    private Long phone;
+    private String phone;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<JobDetails> jobDetails;
