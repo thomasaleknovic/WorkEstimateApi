@@ -8,23 +8,28 @@ import com.thomasaleknovic.workestimateapi.models.Estimate;
 
 public class MockEstimate {
     
-    static String ESTIMATENAME;
-    static String CUSTOMERNAME;
-    static Long CPF;
-    static String ADDRESS;
-    static Long PHONE;
+   public static String ESTIMATE_NAME = "Orçamento teste";
+   public static String CUSTOMER_NAME = "Jurandir da silva";
+   public static String CPF = "83212359643";
+   public static String ADDRESS = "Rua 1 de janeiro";
+   public static String PHONE = "(11) 933124133";
 
-    static public EstimateDTO mockEstimateDTO () {
-        return new EstimateDTO(ESTIMATENAME, CUSTOMERNAME, CPF, ADDRESS, PHONE, null);
+    public static EstimateDTO mockEstimateDTO () {
+        return new EstimateDTO(ESTIMATE_NAME, CUSTOMER_NAME, CPF, ADDRESS, PHONE, new ArrayList<>());
+    
     }
 
-    static public Estimate mockEstimateEntity (EstimateDTO data){
-       return new Estimate(data);
+    public static EstimateDTO updatedMockEstimateDTO () {
+        return new EstimateDTO("Orçamento atualizado", CUSTOMER_NAME, CPF, ADDRESS, PHONE, new ArrayList<>());
+    }
+
+    public static Estimate mockEstimateEntity (){
+       return new Estimate(mockEstimateDTO());
     }
 
 
-    static public List<Estimate> mockEstimateList (){
-        Estimate estimate = new Estimate();
+    public static List<Estimate> mockEstimateList (){
+        Estimate estimate = mockEstimateEntity();
         List<Estimate> listEstimates = new ArrayList<>();
         listEstimates.add(estimate);
 
