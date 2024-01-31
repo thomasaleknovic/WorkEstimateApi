@@ -29,8 +29,8 @@ public class EstimateController {
         this.estimateService = estimateService;
     }
 
-    @GetMapping("")
-    public ResponseEntity<Estimate> findEstimate (@RequestBody UUID id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<Estimate> findEstimate (@PathVariable UUID id) {
         return ResponseEntity.ok(estimateService.findEstimate(id));
     }
     
