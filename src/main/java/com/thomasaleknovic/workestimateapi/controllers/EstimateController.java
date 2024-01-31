@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
 import com.thomasaleknovic.workestimateapi.dtos.JobDetailsDTO;
 import com.thomasaleknovic.workestimateapi.models.Estimate;
-import com.thomasaleknovic.workestimateapi.models.JobDetails;
 import com.thomasaleknovic.workestimateapi.services.EstimateService;
 
 @RestController

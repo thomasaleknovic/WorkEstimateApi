@@ -25,7 +25,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "Estimates")
+@Table(name = "estimates")
 public class Estimate {
 
     @JsonDeserialize
