@@ -7,6 +7,6 @@ import java.util.UUID;
 import jakarta.validation.constraints.NotNull;
 
 
-public record JobDetailsDTO(UUID id, @NotNull String title, String description, @NotNull BigDecimal price) {
+public record JobDetailsDTO(@NotNull UUID id, @NotNull String title, String description, @NotNull BigDecimal price) {
     
 }
