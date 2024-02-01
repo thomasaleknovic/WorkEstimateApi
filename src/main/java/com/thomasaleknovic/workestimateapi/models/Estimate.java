@@ -15,6 +15,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +46,8 @@ public class Estimate {
 
     private String phone;
 
+    private BigDecimal totalPrice;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<JobDetails> jobDetails = new ArrayList<>();
 
@@ -54,6 +57,7 @@ public class Estimate {
         this.cpf = data.cpf();
         this.address = data.address();
         this.phone = data.phone();
+        this.totalPrice = data.totalPrice();
         this.jobDetails = data.jobDetails();
     }
 

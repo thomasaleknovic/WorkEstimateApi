@@ -1,5 +1,6 @@
 package com.thomasaleknovic.workestimateapi.utils;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,14 +14,15 @@ public class MockEstimate {
    public static String CPF = "83212359643";
    public static String ADDRESS = "Rua 1 de janeiro";
    public static String PHONE = "(11) 933124133";
+   public static BigDecimal TOTAL_PRICE = new BigDecimal(1000.00);
 
     public static EstimateDTO mockEstimateDTO () {
-        return new EstimateDTO(ESTIMATE_NAME, CUSTOMER_NAME, CPF, ADDRESS, PHONE, new ArrayList<>());
+        return new EstimateDTO(ESTIMATE_NAME, CUSTOMER_NAME, CPF, ADDRESS, PHONE, TOTAL_PRICE, new ArrayList<>());
     
     }
 
     public static EstimateDTO updatedMockEstimateDTO () {
-        return new EstimateDTO("Orçamento atualizado", CUSTOMER_NAME, CPF, ADDRESS, PHONE, new ArrayList<>());
+        return new EstimateDTO("Orçamento atualizado", CUSTOMER_NAME, CPF, ADDRESS, PHONE, TOTAL_PRICE, new ArrayList<>());
     }
 
     public static Estimate mockEstimateEntity (){
