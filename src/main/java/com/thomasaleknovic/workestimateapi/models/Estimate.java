@@ -42,6 +42,8 @@ public class Estimate {
 
     private String cpf;
 
+    private String cep;
+
     private String address;
 
     private String phone;
@@ -55,6 +57,7 @@ public class Estimate {
         this.estimateName = data.estimateName();
         this.customerName = data.customerName();
         this.cpf = data.cpf();
+        this.cep = data.cep();
         this.address = data.address();
         this.phone = data.phone();
         this.totalPrice = data.totalPrice();
