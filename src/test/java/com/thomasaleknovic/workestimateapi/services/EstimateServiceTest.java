@@ -212,7 +212,7 @@ public class EstimateServiceTest {
 
         when(estimateRepository.findById(estimate.getEstimateId())).thenReturn(Optional.of(estimate));
         when(estimateRepository.save(any())).thenReturn(estimate);
-        System.out.println(estimate.getJobDetails().get(0).getTitle());
+
         
         Estimate result = estimateService.updateJobDetailInfo(estimate.getEstimateId(), mockJobDetailsDTO());
 
@@ -243,7 +243,6 @@ public class EstimateServiceTest {
 
         when(estimateRepository.findById(estimate.getEstimateId())).thenReturn(Optional.of(estimate));
         when(estimateRepository.save(any())).thenReturn(estimate);
-        System.out.println(estimate.getJobDetails().get(0).getTitle());
         
         Estimate result = estimateService.deleteJobDetailInfo(estimate.getEstimateId(), mockJobDetailsDTO().id());
 
