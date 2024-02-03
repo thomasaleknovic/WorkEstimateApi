@@ -1,12 +1,677 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orçamento</title>
-</head>
-<body>
-    <h1>Orçamento</h1>
 
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <style type="text/css">
+        @import url(https://themes.googleusercontent.com/fonts/css?kit=JpwRW-6JgAz2BLtpzHgK_QrUvwPuM66u8hqUh65yLupQa8VHDMgjYgPJkG8MAv-0);
+
+        ol {
+            margin: 0;
+            padding: 0
+        }
+
+        table td,
+        table th {
+            padding: 0
+        }
+
+        .c18 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #17bd90;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 173.2pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c36 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #666666;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 125.2pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c33 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #666666;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 112.5pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c15 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #ffffff;
+            border-top-width: 1pt;
+            border-right-width: 0pt;
+            border-left-color: #ffffff;
+            vertical-align: top;
+            border-right-color: #ffffff;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #17bd90;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 111.8pt;
+            border-top-color: #ffffff;
+            border-bottom-style: solid
+        }
+
+        .c11 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #d9d9d9;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 90.8pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c25 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #d9d9d9;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 100.5pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c7 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #ffffff;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #ffffff;
+            vertical-align: top;
+            border-right-color: #ffffff;
+            border-left-width: 0pt;
+            border-top-style: solid;
+            background-color: #17bd90;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 104.2pt;
+            border-top-color: #ffffff;
+            border-bottom-style: solid
+        }
+
+        .c35 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #17bd90;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 100.5pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c24 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #d9d9d9;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 173.2pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c34 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #17bd90;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 82.5pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c13 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #d9d9d9;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 82.5pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c22 {
+            border-right-style: solid;
+            padding: 5pt 5pt 5pt 5pt;
+            border-bottom-color: #17bd90;
+            border-top-width: 1pt;
+            border-right-width: 1pt;
+            border-left-color: #17bd90;
+            vertical-align: middle;
+            border-right-color: #17bd90;
+            border-left-width: 1pt;
+            border-top-style: solid;
+            background-color: #17bd90;
+            border-left-style: solid;
+            border-bottom-width: 1pt;
+            width: 90.8pt;
+            border-top-color: #17bd90;
+            border-bottom-style: solid
+        }
+
+        .c9 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            orphans: 2;
+            widows: 2;
+            text-align: left;
+            height: 11pt
+        }
+
+        .c17 {
+            color: #ffffff;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 11pt;
+            font-family: "Montserrat";
+            font-style: normal
+        }
+
+        .c3 {
+            color: #000000;
+            font-weight: 700;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 11pt;
+            font-family: "Montserrat";
+            font-style: normal
+        }
+
+        .c0 {
+            padding-top: 12pt;
+            padding-bottom: 12pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c28 {
+            padding-top: 12pt;
+            padding-bottom: 12pt;
+            line-height: 1.5;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c10 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.15;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .c27 {
+            color: #000000;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 13pt;
+            font-style: normal
+        }
+
+        .c4 {
+            color: #000000;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 11pt;
+            font-style: normal
+        }
+
+        .c6 {
+            color: #ffffff;
+            text-decoration: none;
+            vertical-align: baseline;
+            font-size: 13pt;
+            font-style: normal
+        }
+
+        .c31 {
+            -webkit-text-decoration-skip: none;
+            color: #1155cc;
+            text-decoration: underline;
+            text-decoration-skip-ink: none
+        }
+
+        .c8 {
+            padding-top: 12pt;
+            padding-bottom: 12pt;
+            line-height: 1.0;
+            text-align: left
+        }
+
+        .c26 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            text-align: left
+        }
+
+        .c16 {
+            padding-top: 0pt;
+            padding-bottom: 0pt;
+            line-height: 1.0;
+            text-align: center
+        }
+
+        .c12 {
+            border-spacing: 0;
+            border-collapse: collapse;
+            margin-right: auto
+        }
+
+        .c30 {
+            margin-left: 212.2pt;
+            border-spacing: 0;
+            border-collapse: collapse;
+            margin-right: auto
+        }
+
+        .c14 {
+            padding-top: 12pt;
+            padding-bottom: 12pt;
+            line-height: 1.0;
+            text-align: center
+        }
+
+        .c19 {
+            background-color: #ffffff;
+            max-width: 451.4pt;
+            padding: 72pt 72pt 72pt 72pt
+        }
+
+        .c2 {
+            font-weight: 400;
+            font-family: "Montserrat"
+        }
+
+        .c29 {
+            color: inherit;
+            text-decoration: inherit
+        }
+
+        .c20 {
+            font-weight: 700;
+            font-family: "Montserrat"
+        }
+
+        .c21 {
+            font-weight: 700;
+            font-family: "Calibri"
+        }
+
+        .c5 {
+            font-weight: 400;
+            font-family: "Arial"
+        }
+
+        .c23 {
+            font-size: 13pt;
+            color: #ffffff
+        }
+
+        .c32 {
+            height: 11pt
+        }
+
+        .c1 {
+            height: 0pt
+        }
+
+        .title {
+            padding-top: 0pt;
+            color: #000000;
+            font-size: 26pt;
+            padding-bottom: 3pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        .subtitle {
+            padding-top: 0pt;
+            color: #666666;
+            font-size: 15pt;
+            padding-bottom: 16pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        li {
+            color: #000000;
+            font-size: 11pt;
+            font-family: "Arial"
+        }
+
+        p {
+            margin: 0;
+            color: #000000;
+            font-size: 11pt;
+            font-family: "Arial"
+        }
+
+        h1 {
+            padding-top: 20pt;
+            color: #000000;
+            font-size: 20pt;
+            padding-bottom: 6pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h2 {
+            padding-top: 18pt;
+            color: #000000;
+            font-size: 16pt;
+            padding-bottom: 6pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h3 {
+            padding-top: 16pt;
+            color: #434343;
+            font-size: 14pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h4 {
+            padding-top: 14pt;
+            color: #666666;
+            font-size: 12pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h5 {
+            padding-top: 12pt;
+            color: #666666;
+            font-size: 11pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+
+        h6 {
+            padding-top: 12pt;
+            color: #666666;
+            font-size: 11pt;
+            padding-bottom: 4pt;
+            font-family: "Arial";
+            line-height: 1.15;
+            page-break-after: avoid;
+            font-style: italic;
+            orphans: 2;
+            widows: 2;
+            text-align: left
+        }
+    </style>
+</head>
+
+<body class="c19 doc-content" style="margin-top: -80px;">
+
+    <!-- ## header ## -->
+    <div>
+        <div style="display: flex; flex-direction: row; gap: 30px;">
+
+            <!-- ## Logo ## -->
+
+            <img alt="" src="/images/image1.png"
+                style="width: 215.25px; height: 61.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                title="">
+
+            <!-- ## Cabeçalho ## -->
+
+            <table class="c12">
+                <thead>
+                    <tr class="c1">
+                        <td class="c15" colspan="1" rowspan="1">
+                            <p class="c26"><span class="c6 c21">Ordem de serviço:</span></p>
+                        </td>
+                        <td class="c7" colspan="1" rowspan="1">
+                            <p class="c26"><span class="c21 c23">23122701</span></p>
+                        </td>
+                <tbody></tbody>
+                </tr>
+                <tr class="c1">
+                    <td class="c15" colspan="1" rowspan="1">
+                        <p class="c26"><span class="c6 c21">Data:</span></p>
+                    </td>
+                    <td class="c7" colspan="1" rowspan="1">
+                        <p class="c26"><span class="c21 c23">29/01/2024</span></p>
+                    </td>
+                </tr>
+                </thead>
+            </table>
+
+
+        </div>
+    </div>
+
+
+
+    <!-- ## Dados empresa ## -->
+    <p class="c0"><span class="c20">ECO HIDRO</span><span class="c3">ECO HIDRO BANHEIRAS RESTAURAÇÃO E PRESTADORA DE
+            SERVIÇOS</span></p>
+    <p class="c10"><span class="c2">ecohidrobanheiras@outlookcom</span></p>
+    <p class="c0"><span class="c4 c2">(51) 9 8677-1004</span></p>
+    <p class="c0"><span class="c4 c2">(51) 9 8588-2074</span></p>
+
+    <!-- ## Dados cliente ## -->
+
+    <p class="c0"><span class="c20" th:text="${estimate.customerName}">Cliente</p>
+    <p class="c0"><span class="c20">CPF: </span><span class="c4 c2" th:text="${estimate.cpf}"></span></p>
+    <p class="c0"><span class="c20">CEP: </span><span class="c4 c2" th:text="${estimate.cep}"></span></p>
+    <p class="c0"><span class="c20">Endereço: </span><span class="c4 c2"  th:text="${estimate.address}"></span></p>
+
+    <!-- ## Detalhes ## -->
+    <table class="c12">
+        <thead>
+            <!-- ## colunas ## -->
+            <tr class="c1">
+                <td class="c18" colspan="1" rowspan="1">
+                    <p class="c16"><span class="c17">DESCRIÇÃO</span></p>
+                </td>
+                <td class="c35" colspan="1" rowspan="1">
+                    <p class="c16"><span class="c17">QUANTIDADE</span></p>
+                </td>
+                <td class="c34" colspan="1" rowspan="1">
+                    <p class="c16"><span class="c17">PREÇO UNITÁRIO</span></p>
+                </td>
+                <td class="c22" colspan="1" rowspan="1">
+                    <p class="c16"><span class="c17">TOTAL</span></p>
+                </td>
+        <tbody></tbody>
+        </tr>
+
+        <!-- ## Itens ## -->
+        <tr th:each="jobDetail : ${estimate.jobDetails}">
+            <td class="c24" colspan="1" rowspan="1">
+                <p class="c8"><span class="c3" th:text="${jobDetail.description}"></span></p>
+            </td>
+            <td class="c25" colspan="1" rowspan="1">
+                <p class="c16"><span class="c3"th:text="${jobDetail.quantity}">1</span></p>
+            </td>
+            <td class="c13" colspan="1" rowspan="1">
+                <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.unitPrice)}"></span></p>
+            </td>
+            <td class="c11" colspan="1" rowspan="1">
+                <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.price)}">R$150</span></p>
+            </td>
+        </tr>
+        
+
+        </thead>
+    </table>
+
+
+
+    <!-- ## Total ## -->
+    <table class="c30">
+        <tr class="c1">
+            <td class="c36" colspan="1" rowspan="1">
+                <p class="c16"><span class="c17">Total</span></p>
+            </td>
+            <td class="c33" colspan="1" rowspan="1">
+                <p class="c14"><span class="c17" th:text="${#numbers.formatCurrency(estimate.totalPrice) }">R$---</span></p>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- ## Observações ## -->
+    <div style="margin-top: 40px; display: grid; grid-template-columns: 30fr 30fr; gap: 40px; ">
+        <div>
+            <p class="c0"><span class="c20">Forma de Pagamento</span></p>
+            <p class="c28"><span class="c4 c2">R$500 de entrada e o restante R$1230 no pix + R$6000 no cartão de crédito
+                    com acréscimo </span></p>
+            <p class="c28"><span class="c20">PIX CPF: </span><span class="c4 c2">809.608.630-87</span></p>
+
+        </div>
+
+        <div>
+            <p class="c0"><span class="c3">Observação</span></p>
+            <p class="c0"><span class="c4 c2">Instalação agendada 31/01/24</span></p>
+            <p class="c9"><span class="c4 c2"></span></p>
+        </div>
+
+    </div>
+
+    <!-- ## Assinatura ## -->
+    <div>
+        <img alt="" src="/images/image2.png"
+            style="width: 700.50px; height: 62.49px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+            title="">
+    </div>
 </body>
+
 </html>
