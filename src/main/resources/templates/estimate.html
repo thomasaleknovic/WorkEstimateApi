@@ -4,13 +4,11 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <style type="text/css">
-        @import url(https://themes.googleusercontent.com/fonts/css?kit=JpwRW-6JgAz2BLtpzHgK_QrUvwPuM66u8hqUh65yLupQa8VHDMgjYgPJkG8MAv-0);
-
-        ol {
-            margin: 0;
-            padding: 0
+        body {
+            font-family: Arial, Helvetica, sans-serif !important;
         }
 
+     
         table td,
         table th {
             padding: 0
@@ -260,7 +258,7 @@
             text-decoration: none;
             vertical-align: baseline;
             font-size: 11pt;
-            font-family: "Montserrat";
+
             font-style: normal
         }
 
@@ -270,7 +268,7 @@
             text-decoration: none;
             vertical-align: baseline;
             font-size: 11pt;
-            font-family: "Montserrat";
+
             font-style: normal
         }
 
@@ -381,7 +379,6 @@
 
         .c2 {
             font-weight: 400;
-            font-family: "Montserrat"
         }
 
         .c29 {
@@ -391,17 +388,14 @@
 
         .c20 {
             font-weight: 700;
-            font-family: "Montserrat"
         }
 
         .c21 {
             font-weight: 700;
-            font-family: "Calibri"
         }
 
         .c5 {
             font-weight: 400;
-            font-family: "Arial"
         }
 
         .c23 {
@@ -422,7 +416,6 @@
             color: #000000;
             font-size: 26pt;
             padding-bottom: 3pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -435,7 +428,6 @@
             color: #666666;
             font-size: 15pt;
             padding-bottom: 16pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -446,14 +438,12 @@
         li {
             color: #000000;
             font-size: 11pt;
-            font-family: "Arial"
         }
 
         p {
             margin: 0;
             color: #000000;
             font-size: 11pt;
-            font-family: "Arial"
         }
 
         h1 {
@@ -461,7 +451,6 @@
             color: #000000;
             font-size: 20pt;
             padding-bottom: 6pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -474,7 +463,6 @@
             color: #000000;
             font-size: 16pt;
             padding-bottom: 6pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -487,7 +475,6 @@
             color: #434343;
             font-size: 14pt;
             padding-bottom: 4pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -500,7 +487,6 @@
             color: #666666;
             font-size: 12pt;
             padding-bottom: 4pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -513,7 +499,6 @@
             color: #666666;
             font-size: 11pt;
             padding-bottom: 4pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             orphans: 2;
@@ -526,7 +511,6 @@
             color: #666666;
             font-size: 11pt;
             padding-bottom: 4pt;
-            font-family: "Arial";
             line-height: 1.15;
             page-break-after: avoid;
             font-style: italic;
@@ -537,15 +521,14 @@
     </style>
 </head>
 
-<body class="c19 doc-content" style="margin-top: -80px;">
-
+<body class="c19 doc-content" style="margin-top: -120px;">
     <!-- ## header ## -->
     <div>
         <div style="display: flex; flex-direction: row; gap: 30px;">
 
             <!-- ## Logo ## -->
 
-            <img alt="" src="/images/image1.png"
+            <img alt="" src="static/images/image1.png"
                 style="width: 215.25px; height: 61.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
                 title="">
 
@@ -578,20 +561,30 @@
     </div>
 
 
+    <div style="display: flex; flex-direction: row; gap: 30px;">
+        <!-- ## Dados empresa ## -->
+        <div>
+            <p class="c0"><span class="c3">ECO HIDRO BANHEIRAS RESTAURAÇÃO E
+                    PRESTADORA DE
+                    SERVIÇOS</span></p>
+            <p class="c10"><span class="c2">ecohidrobanheiras@outlookcom</span></p>
+            <p class="c0"><span class="c4 c2">(51) 9 8677-1004</span></p>
+            <p class="c0"><span class="c4 c2">(51) 9 8588-2074</span></p>
 
-    <!-- ## Dados empresa ## -->
-    <p class="c0"><span class="c20">ECO HIDRO</span><span class="c3">ECO HIDRO BANHEIRAS RESTAURAÇÃO E PRESTADORA DE
-            SERVIÇOS</span></p>
-    <p class="c10"><span class="c2">ecohidrobanheiras@outlookcom</span></p>
-    <p class="c0"><span class="c4 c2">(51) 9 8677-1004</span></p>
-    <p class="c0"><span class="c4 c2">(51) 9 8588-2074</span></p>
+        </div>
 
-    <!-- ## Dados cliente ## -->
+        <!-- ## Dados cliente ## -->
+        <div>
+            <p class="c0"><span class="c20" th:text="${estimate.customerName}">Cliente</p>
+            <p class="c0"><span class="c20">CPF: </span><span class="c4 c2" th:text="${estimate.cpf}"></span></p>
+            <p class="c0"><span class="c20">CEP: </span><span class="c4 c2" th:text="${estimate.cep}"></span></p>
+            <p class="c0"><span class="c20">Endereço: </span><span class="c4 c2" th:text="${estimate.address}"></span>
+            </p>
+        </div>
 
-    <p class="c0"><span class="c20" th:text="${estimate.customerName}">Cliente</p>
-    <p class="c0"><span class="c20">CPF: </span><span class="c4 c2" th:text="${estimate.cpf}"></span></p>
-    <p class="c0"><span class="c20">CEP: </span><span class="c4 c2" th:text="${estimate.cep}"></span></p>
-    <p class="c0"><span class="c20">Endereço: </span><span class="c4 c2"  th:text="${estimate.address}"></span></p>
+
+    </div>
+
 
     <!-- ## Detalhes ## -->
     <table class="c12">
@@ -619,7 +612,7 @@
                 <p class="c8"><span class="c3" th:text="${jobDetail.description}"></span></p>
             </td>
             <td class="c25" colspan="1" rowspan="1">
-                <p class="c16"><span class="c3"th:text="${jobDetail.quantity}">1</span></p>
+                <p class="c16"><span class="c3" th:text="${jobDetail.quantity}">1</span></p>
             </td>
             <td class="c13" colspan="1" rowspan="1">
                 <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.unitPrice)}"></span></p>
@@ -628,7 +621,7 @@
                 <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.price)}">R$150</span></p>
             </td>
         </tr>
-        
+
 
         </thead>
     </table>
@@ -642,30 +635,26 @@
                 <p class="c16"><span class="c17">Total</span></p>
             </td>
             <td class="c33" colspan="1" rowspan="1">
-                <p class="c14"><span class="c17" th:text="${#numbers.formatCurrency(estimate.totalPrice) }">R$---</span></p>
+                <p class="c14"><span class="c17" th:text="${#numbers.formatCurrency(estimate.totalPrice) }">R$---</span>
+                </p>
             </td>
         </tr>
     </table>
 
 
     <!-- ## Observações ## -->
-    <div style="margin-top: 40px; display: grid; grid-template-columns: 30fr 30fr; gap: 40px; ">
-        <div>
-            <p class="c0"><span class="c20">Forma de Pagamento</span></p>
-            <p class="c28"><span class="c4 c2">R$500 de entrada e o restante R$1230 no pix + R$6000 no cartão de crédito
-                    com acréscimo </span></p>
-            <p class="c28"><span class="c20">PIX CPF: </span><span class="c4 c2">809.608.630-87</span></p>
 
-        </div>
-
-        <div>
-            <p class="c0"><span class="c3">Observação</span></p>
-            <p class="c0"><span class="c4 c2">Instalação agendada 31/01/24</span></p>
-            <p class="c9"><span class="c4 c2"></span></p>
-        </div>
-
-    </div>
-
+    <table style="margin-top: 40px">
+        <tr class="c1">
+            <td style="width: 200pt; font-weight: bold" colspan="1" rowspan="1"  >Forma de Pagamento</span></tdp>
+            <td  style="width: 200pt; padding-left: 15px !important; font-weight: bold"  colspan="1" rowspan="1" >Observação</td>
+        </tr>
+        <tr>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">R$500 de entrada e o restante R$1230 no pix + R$6000 no cartão de crédito com acréscimo</td>
+            <td  style="width: 200pt; padding-left: 15px !important;" colspan="1" rowspan="1">Instalação agendada 31/01/24</td>
+        </tr>
+     </table>
+  
     <!-- ## Assinatura ## -->
     <div>
         <img alt="" src="/images/image2.png"
