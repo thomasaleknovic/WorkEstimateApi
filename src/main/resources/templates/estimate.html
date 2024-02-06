@@ -521,73 +521,72 @@
     </style>
 </head>
 
-<body class="c19 doc-content" style="margin-top: -120px;">
+<body class="c19 doc-content" style="margin-top: -120px; margin-left: -50px;">
     <!-- ## header ## -->
     <div>
-        <div style="display: flex; flex-direction: row; gap: 30px;">
-
-            <!-- ## Logo ## -->
-
-            <img alt="" src="static/images/image1.png"
-                style="width: 215.25px; height: 61.50px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
-                title="">
-
-            <!-- ## Cabeçalho ## -->
-
-            <table class="c12">
-                <thead>
-                    <tr class="c1">
-                        <td class="c15" colspan="1" rowspan="1">
-                            <p class="c26"><span class="c6 c21">Ordem de serviço:</span></p>
-                        </td>
-                        <td class="c7" colspan="1" rowspan="1">
-                            <p class="c26"><span class="c21 c23">23122701</span></p>
-                        </td>
-                <tbody></tbody>
-                </tr>
-                <tr class="c1">
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c26"><span class="c6 c21">Data:</span></p>
-                    </td>
-                    <td class="c7" colspan="1" rowspan="1">
-                        <p class="c26"><span class="c21 c23">29/01/2024</span></p>
-                    </td>
-                </tr>
-                </thead>
-            </table>
-
-
-        </div>
+        <table>
+            <tr>
+                <td align="left">
+                    <img alt="" th:src="@{classpath:static/images/image1.png}"
+                        style="width: 200px;  margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+                        title="">
+                </td>
+                <td align="left" style="width: 300pt; padding-left: 20px;">
+                    <table class="c12">
+                        <table class="c12">
+                            <thead>
+                                <tr class="c1">
+                                    <td class="c15" colspan="1" rowspan="1">
+                                        <p class="c26"><span class="c6 c21">Ordem de serviço:</span></p>
+                                    </td>
+                                    <td class="c7" colspan="1" rowspan="1">
+                                        <p class="c26"><span class="c21 c23" th:text="${estimate.serviceOrder}">...</span></p>
+                                    </td>
+                            <tbody></tbody>
+                            </tr>
+                            <tr class="c1">
+                                <td class="c15" colspan="1" rowspan="1">
+                                    <p class="c26"><span class="c6 c21">Data:</span></p>
+                                </td>
+                                <td class="c7" colspan="1" rowspan="1">
+                                    <p class="c26"><span class="c21 c23" th:text="${#temporals.format(estimate.createdAt, 'dd/MM/yyyy')}">...</span></p>
+                                </td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </table>
+                </td>
+            </tr>
+        </table>
+       
     </div>
 
-
-    <div style="display: flex; flex-direction: row; gap: 30px;">
         <!-- ## Dados empresa ## -->
-        <div>
-            <p class="c0"><span class="c3">ECO HIDRO BANHEIRAS RESTAURAÇÃO E
-                    PRESTADORA DE
-                    SERVIÇOS</span></p>
-            <p class="c10"><span class="c2">ecohidrobanheiras@outlookcom</span></p>
-            <p class="c0"><span class="c4 c2">(51) 9 8677-1004</span></p>
-            <p class="c0"><span class="c4 c2">(51) 9 8588-2074</span></p>
 
-        </div>
-
-        <!-- ## Dados cliente ## -->
-        <div>
-            <p class="c0"><span class="c20" th:text="${estimate.customerName}">Cliente</p>
-            <p class="c0"><span class="c20">CPF: </span><span class="c4 c2" th:text="${estimate.cpf}"></span></p>
-            <p class="c0"><span class="c20">CEP: </span><span class="c4 c2" th:text="${estimate.cep}"></span></p>
-            <p class="c0"><span class="c20">Endereço: </span><span class="c4 c2" th:text="${estimate.address}"></span>
-            </p>
-        </div>
-
-
-    </div>
+    <table style="margin-top: 40px">
+        <tr class="c1">
+            <td style="width: 200pt; font-weight: bold" colspan="1" rowspan="1">ECO HIDRO BANHEIRAS RESTAURAÇÃO E
+                PRESTADORA DE
+                SERVIÇOS</span></td>
+            <td  style="width: 200pt; padding-left: 30px !important; font-weight: bold"  colspan="1" rowspan="1" ><span class="c20" th:text="${estimate.customerName}"></span></td>
+        </tr>
+        <tr>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">ecohidrobanheiras@outlookcom</td>
+            <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"><span class="c20">CPF: </span><span class="c4 c2" th:text="${estimate.cpf}"></span></td>
+        </tr>
+        <tr>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">(51) 9 8677-1004</td>
+            <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"><span class="c20">CEP: </span><span class="c4 c2" th:text="${estimate.cep}"></span></td>
+        </tr>
+        <tr>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">(51) 9 8588-2074</td>
+            <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"><span class="c20">Endereço: </span><span class="c4 c2" th:text="${estimate.address}"></span></td>
+        </tr>
+     </table>
 
 
     <!-- ## Detalhes ## -->
-    <table class="c12">
+    <table class="c12" style="margin-top: 40px;">
         <thead>
             <!-- ## colunas ## -->
             <tr class="c1">
@@ -618,7 +617,7 @@
                 <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.unitPrice)}"></span></p>
             </td>
             <td class="c11" colspan="1" rowspan="1">
-                <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.price)}">R$150</span></p>
+                <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.price)}"></span></p>
             </td>
         </tr>
 
@@ -647,18 +646,18 @@
     <table style="margin-top: 40px">
         <tr class="c1">
             <td style="width: 200pt; font-weight: bold" colspan="1" rowspan="1"  >Forma de Pagamento</span></tdp>
-            <td  style="width: 200pt; padding-left: 15px !important; font-weight: bold"  colspan="1" rowspan="1" >Observação</td>
+            <td  style="width: 200pt; padding-left: 30px !important; font-weight: bold"  colspan="1" rowspan="1" >Observação</td>
         </tr>
         <tr>
-            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">R$500 de entrada e o restante R$1230 no pix + R$6000 no cartão de crédito com acréscimo</td>
-            <td  style="width: 200pt; padding-left: 15px !important;" colspan="1" rowspan="1">Instalação agendada 31/01/24</td>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1" th:text="${estimate.paymentMethod}"></td>
+            <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1" th:text="${estimate.observation}"></td>
         </tr>
      </table>
   
     <!-- ## Assinatura ## -->
     <div>
-        <img alt="" src="/images/image2.png"
-            style="width: 700.50px; height: 62.49px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
+        <img alt="" th:src="@{classpath:static/images/image2.png}"
+            style="width: 550px; margin-left: 0.00px; margin-top: 40px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);"
             title="">
     </div>
 </body>
