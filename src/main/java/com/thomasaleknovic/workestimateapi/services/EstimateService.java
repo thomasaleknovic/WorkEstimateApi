@@ -15,6 +15,9 @@ import com.thomasaleknovic.workestimateapi.exceptions.Estimate.EstimateNotFoundE
 import com.thomasaleknovic.workestimateapi.models.Estimate;
 import com.thomasaleknovic.workestimateapi.models.JobDetails;
 import com.thomasaleknovic.workestimateapi.repository.EstimateRepository;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -24,6 +27,21 @@ public class EstimateService {
     private EstimateRepository estimateRepository;
 
  
+    @Transactional
+    public int getNextServiceOrder() {
+        // Obter o último número sequencial
+        Estimate lastEstimate = estimateRepository.findTopByOrderByCreatedAtDesc();
+
+        int nextServiceOrder = 10001; 
+
+        
+
+        if (lastEstimate != null) {
+            nextServiceOrder = lastEstimate.getServiceOrder() + 1;
+        }
+
+        return nextServiceOrder;
+    }
     
      
     public List<Estimate> findAllEstimates(){
@@ -38,6 +56,7 @@ public class EstimateService {
 
     public Estimate createEstimate (EstimateDTO data) {
         Estimate estimate = new Estimate(data);
+        estimate.setServiceOrder(getNextServiceOrder());
         return estimateRepository.save(estimate);
 
     }
