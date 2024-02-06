@@ -22,9 +22,11 @@ public class JobDetails {
     @Id
     private UUID id;
 
-    private String title;
-
     private String description;
+
+    private Short quantity;
+
+    private BigDecimal unitPrice;
 
     private BigDecimal price;
 
@@ -32,9 +34,10 @@ public class JobDetails {
     public JobDetails (JobDetailsDTO data) {
 
         this.id = data.id();
-        this.title = data.title();
         this.description = data.description();
-        this.price = data.price();
+        this.quantity = data.quantity();
+        this.unitPrice = data.unitPrice();
+        this.price = BigDecimal.valueOf(data.quantity()).multiply(data.unitPrice());
     }
 
 

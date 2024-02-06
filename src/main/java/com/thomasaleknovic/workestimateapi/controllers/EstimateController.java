@@ -72,4 +72,6 @@ public class EstimateController {
         return ResponseEntity.ok(estimateService.deleteJobDetailInfo(id, jobDetailId));
        
     } 
+
+  
 }
