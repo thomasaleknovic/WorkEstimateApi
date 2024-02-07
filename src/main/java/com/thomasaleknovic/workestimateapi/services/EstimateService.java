@@ -30,12 +30,12 @@ public class EstimateService {
     @Transactional
     public int getNextServiceOrder() {
         // Obter o último número sequencial
-        Estimate lastEstimate = estimateRepository.findTopByOrderByCreatedAtDesc();
+        Estimate lastEstimate = estimateRepository.findFirstByOrderByServiceOrderDesc();
 
         int nextServiceOrder = 10001; 
 
-        
-
+        System.out.println(lastEstimate.getServiceOrder());
+        // quero verificar se lastEstimate existe
         if (lastEstimate != null) {
             nextServiceOrder = lastEstimate.getServiceOrder() + 1;
         }

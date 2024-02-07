@@ -8,5 +8,5 @@ import com.thomasaleknovic.workestimateapi.models.Estimate;
 
 public interface EstimateRepository extends JpaRepository<Estimate, UUID> {
     
-    Estimate findTopByOrderByCreatedAtDesc();
+    Estimate findFirstByOrderByServiceOrderDesc();
 }
