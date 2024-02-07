@@ -32,9 +32,8 @@ public class EstimateService {
         // Obter o último número sequencial
         Estimate lastEstimate = estimateRepository.findFirstByOrderByServiceOrderDesc();
 
-        int nextServiceOrder = 10001; 
+        int nextServiceOrder = 10001;
 
-        System.out.println(lastEstimate.getServiceOrder());
         // quero verificar se lastEstimate existe
         if (lastEstimate != null) {
             nextServiceOrder = lastEstimate.getServiceOrder() + 1;
