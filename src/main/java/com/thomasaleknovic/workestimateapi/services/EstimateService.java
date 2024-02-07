@@ -91,8 +91,11 @@ public class EstimateService {
         estimate.setEstimateName(data.estimateName());
         estimate.setCustomerName(data.customerName());
         estimate.setCpf(data.cpf());
+        estimate.setCep(data.cep());
         estimate.setAddress(data.address());
         estimate.setPhone(data.phone());
+        estimate.setPaymentMethod(data.paymentMethod());
+        estimate.setObservation(data.observation());
         estimate.setTotalPrice(data.totalPrice());
         return estimateRepository.save(estimate);
        

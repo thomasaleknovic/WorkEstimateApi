@@ -614,10 +614,10 @@
                 <p class="c16"><span class="c3" th:text="${jobDetail.quantity}">1</span></p>
             </td>
             <td class="c13" colspan="1" rowspan="1">
-                <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.unitPrice)}"></span></p>
+                <p class="c14"><span class="c3" th:text="R$ ${jobDetail.unitPrice}"></span></p>
             </td>
             <td class="c11" colspan="1" rowspan="1">
-                <p class="c14"><span class="c3" th:text="${#numbers.formatCurrency(jobDetail.price)}"></span></p>
+                <p class="c14"><span class="c3" th:text="R$ ${jobDetail.price}"></span></p>
             </td>
         </tr>
 
@@ -634,7 +634,7 @@
                 <p class="c16"><span class="c17">Total</span></p>
             </td>
             <td class="c33" colspan="1" rowspan="1">
-                <p class="c14"><span class="c17" th:text="${#numbers.formatCurrency(estimate.totalPrice) }">R$---</span>
+                <p class="c14"><span class="c17" th:text="R$ ${estimate.totalPrice}"></span>
                 </p>
             </td>
         </tr>
