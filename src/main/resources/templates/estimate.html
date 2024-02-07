@@ -565,29 +565,33 @@
 
     <table style="margin-top: 40px">
         <tr class="c1">
-            <td style="width: 200pt; font-weight: bold" colspan="1" rowspan="1">ECO HIDRO BANHEIRAS RESTAURAÇÃO E
-                PRESTADORA DE
-                SERVIÇOS</span></td>
-            <td  style="width: 200pt; padding-left: 30px !important; font-weight: bold"  colspan="1" rowspan="1" ><span class="c20" th:text="${estimate.customerName}"></span></td>
+            <td style="width: 200pt; font-weight: bold" colspan="1" rowspan="1">ECO HIDRO BANHEIRAS SUSTENTÁVEIS E
+                PRESTADORA DE SERVIÇOS</td>
+            <td  style="width: 200pt; padding-left: 30px !important; font-weight: bold"  colspan="1" rowspan="1"><span class="c20" th:text="${#strings.toUpperCase(estimate.customerName)}"></span></td>
         </tr>
         <tr>
-            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">ecohidrobanheiras@outlookcom</td>
+
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">01.986.992/0001-30</td>
             <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"><span class="c20">CPF: </span><span class="c4 c2" th:text="${estimate.cpf}"></span></td>
         </tr>
         <tr>
-            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">(51) 9 8677-1004</td>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">ecohidrobanheiras@outlookcom</td>
             <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"><span class="c20">CEP: </span><span class="c4 c2" th:text="${estimate.cep}"></span></td>
         </tr>
         <tr>
             <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">(51) 9 8588-2074</td>
             <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"><span class="c20">Endereço: </span><span class="c4 c2" th:text="${estimate.address}"></span></td>
         </tr>
+        <tr>
+            <td  style="width: 200pt; padding-top: 10px !important"  colspan="1" rowspan="1">(51) 9 8677-1004</td>
+            <td  style="width: 200pt; padding-left: 30px !important;" colspan="1" rowspan="1"></td>
+        </tr>
      </table>
 
 
     <!-- ## Detalhes ## -->
     <table class="c12" style="margin-top: 40px;">
-        <thead>
+
             <!-- ## colunas ## -->
             <tr class="c1">
                 <td class="c18" colspan="1" rowspan="1">
@@ -602,7 +606,6 @@
                 <td class="c22" colspan="1" rowspan="1">
                     <p class="c16"><span class="c17">TOTAL</span></p>
                 </td>
-        <tbody></tbody>
         </tr>
 
         <!-- ## Itens ## -->
@@ -620,9 +623,6 @@
                 <p class="c14 c3">R$<span class="c3" th:text="${jobDetail.price}"></span></p>
             </td>
         </tr>
-
-
-        </thead>
     </table>
 
 
