@@ -36,7 +36,7 @@ public class AuthenticationController {
         var usernamePassword = new UsernamePasswordAuthenticationToken(
                 authenticationDTO.username(), authenticationDTO.password());
         var auth = authenticationManager.authenticate(usernamePassword);
-        
+
         var token = tokenService.generateToken((User) auth.getPrincipal());
 
         return ResponseEntity.ok(new LoginResponseDTO(token));
