@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
@@ -18,7 +17,6 @@ import com.thomasaleknovic.workestimateapi.repository.EstimateRepository;
 
 import jakarta.transaction.Transactional;
 
-import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class EstimateService {
@@ -29,12 +27,12 @@ public class EstimateService {
  
     @Transactional
     public int getNextServiceOrder() {
-        // Obter o último número sequencial
+
         Estimate lastEstimate = estimateRepository.findFirstByOrderByServiceOrderDesc();
 
         int nextServiceOrder = 10001;
 
-        // quero verificar se lastEstimate existe
+
         if (lastEstimate != null) {
             nextServiceOrder = lastEstimate.getServiceOrder() + 1;
         }
@@ -48,8 +46,7 @@ public class EstimateService {
     }
 
     public Estimate findEstimate (UUID id) {
-       return estimateRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-               "Orçamento não encontrado!"));
+       return estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
        
     }
 
@@ -75,7 +72,11 @@ public class EstimateService {
 
     public Estimate updateJobDetailInfo (UUID id, JobDetailsDTO data) {
         Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
-        JobDetails jobDetails = estimate.getJobDetails().stream().filter(item -> item.getId().equals(data.id())).findFirst().orElseThrow(EstimateNotFoundException::new);
+
+        JobDetails jobDetails = estimate.getJobDetails().stream().filter(
+                item -> item.getId().equals(data.id())).findFirst()
+                .orElseThrow(EstimateNotFoundException::new);
+
         jobDetails.setQuantity(data.quantity());
         jobDetails.setUnitPrice(data.unitPrice());
         jobDetails.setDescription(data.description());

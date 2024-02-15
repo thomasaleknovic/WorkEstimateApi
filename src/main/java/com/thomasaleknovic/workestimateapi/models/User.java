@@ -2,6 +2,7 @@ package com.thomasaleknovic.workestimateapi.models;
 
 import com.thomasaleknovic.workestimateapi.dtos.RegisterDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,11 +27,14 @@ public class User implements UserDetails {
     private UUID userId;
 
     @Column(unique=true)
+    @NotNull
     private String username;
 
+    @NotNull
     private String password;
 
     @Column(unique=true)
+    @NotNull
     private String email;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)

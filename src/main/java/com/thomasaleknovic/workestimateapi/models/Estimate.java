@@ -1,5 +1,6 @@
 package com.thomasaleknovic.workestimateapi.models;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -44,15 +45,19 @@ public class Estimate {
 
     private int serviceOrder;
 
+    @NotNull
     private String estimateName;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate createdAt = LocalDate.now() ;
 
+    @NotNull
     private String customerName;
 
+    @NotNull
     private String cpf;
+
 
     private String cep;
 
