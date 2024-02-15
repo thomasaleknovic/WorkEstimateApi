@@ -4,6 +4,7 @@ import com.thomasaleknovic.workestimateapi.configs.security.TokenService;
 import com.thomasaleknovic.workestimateapi.dtos.AuthenticationDTO;
 import com.thomasaleknovic.workestimateapi.dtos.LoginResponseDTO;
 import com.thomasaleknovic.workestimateapi.dtos.RegisterDTO;
+import com.thomasaleknovic.workestimateapi.exceptions.User.UserNotFoundException;
 import com.thomasaleknovic.workestimateapi.models.User;
 import com.thomasaleknovic.workestimateapi.repository.UserRepository;
 import jakarta.validation.Valid;
