@@ -1,6 +1,7 @@
 package com.thomasaleknovic.workestimateapi.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,21 +35,27 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID companyId;
 
+    @NotNull
     private String companyName;
 
     @Column(unique=true)
+    @NotNull
     private String cnpj;
 
+    @NotNull
     private String cep;
 
+    @NotNull
     private String address;
 
+    @NotNull
     private String phoneOne;
 
     private String phoneTwo;
 
+    @NotNull
     private String email;
-
+    
     private String website;
 
     private String logo;

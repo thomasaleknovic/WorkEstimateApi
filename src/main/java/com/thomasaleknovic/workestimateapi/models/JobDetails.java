@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import com.thomasaleknovic.workestimateapi.dtos.JobDetailsDTO;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,10 +23,13 @@ public class JobDetails {
     @Id
     private UUID id;
 
+    @NotNull
     private String description;
 
+    @NotNull
     private Short quantity;
 
+    @NotNull
     private BigDecimal unitPrice;
 
     private BigDecimal price;
