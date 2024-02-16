@@ -69,7 +69,7 @@ public class Estimate {
 
     private String paymentMethod;
 
-    private BigDecimal totalPrice;
+    private BigDecimal totalPrice = BigDecimal.valueOf(0);
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<JobDetails> jobDetails = new ArrayList<>();
@@ -83,7 +83,6 @@ public class Estimate {
         this.phone = data.phone();
         this.observation = data.observation();
         this.paymentMethod = data.paymentMethod();
-        this.totalPrice = data.totalPrice();
         this.jobDetails = data.jobDetails();
     }
 
