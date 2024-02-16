@@ -39,6 +39,19 @@ public class EstimateService {
 
         return nextServiceOrder;
     }
+
+    @Transactional
+    public BigDecimal getTotalPrice(Estimate estimate) {
+
+
+        BigDecimal totalPrice = BigDecimal.valueOf(0);
+
+        for (JobDetails item : estimate.getJobDetails()) {
+            totalPrice = totalPrice.add(item.getPrice());
+        }
+
+        return totalPrice;
+    }
     
      
     public List<Estimate> findAllEstimates(){
@@ -58,7 +71,8 @@ public class EstimateService {
     }
 
     public Estimate addJobDetail (UUID id, JobDetailsDTO data) {
-        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        Estimate estimate = estimateRepository.findById(id)
+                .orElseThrow(EstimateNotFoundException::new);
        
         JobDetails jobDetails = new JobDetails();
         jobDetails.setId(data.id());
@@ -67,6 +81,7 @@ public class EstimateService {
         jobDetails.setDescription(data.description());
         jobDetails.setPrice(BigDecimal.valueOf(data.quantity()).multiply(data.unitPrice()));
         estimate.getJobDetails().add(jobDetails);
+        estimate.setTotalPrice(getTotalPrice(estimate));
         return estimateRepository.save(estimate);
     }
 
@@ -81,6 +96,7 @@ public class EstimateService {
         jobDetails.setUnitPrice(data.unitPrice());
         jobDetails.setDescription(data.description());
         jobDetails.setPrice(BigDecimal.valueOf(data.quantity()).multiply(data.unitPrice()));
+        estimate.setTotalPrice(getTotalPrice(estimate));
         return estimateRepository.save(estimate);
         
 
@@ -96,7 +112,6 @@ public class EstimateService {
         estimate.setPhone(data.phone());
         estimate.setPaymentMethod(data.paymentMethod());
         estimate.setObservation(data.observation());
-        estimate.setTotalPrice(data.totalPrice());
         return estimateRepository.save(estimate);
        
     }
@@ -110,6 +125,7 @@ public class EstimateService {
     public Estimate deleteJobDetailInfo (UUID estimateId, UUID jobDetailId ) {
         Estimate estimate = estimateRepository.findById(estimateId).orElseThrow(EstimateNotFoundException::new);
         estimate.getJobDetails().removeIf(item -> item.getId().equals(jobDetailId));
+        estimate.setTotalPrice(getTotalPrice(estimate));
         return estimateRepository.save(estimate);
     }
 
