@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
 import com.thomasaleknovic.workestimateapi.dtos.JobDetailsDTO;
+import com.thomasaleknovic.workestimateapi.dtos.PaymentMethodDTO;
 import com.thomasaleknovic.workestimateapi.exceptions.Estimate.EstimateNotFoundException;
 import com.thomasaleknovic.workestimateapi.models.Estimate;
 import com.thomasaleknovic.workestimateapi.models.JobDetails;
+import com.thomasaleknovic.workestimateapi.models.PaymentMethod;
 import com.thomasaleknovic.workestimateapi.repository.EstimateRepository;
 
 import jakarta.transaction.Transactional;
@@ -68,6 +70,22 @@ public class EstimateService {
         estimate.setServiceOrder(getNextServiceOrder());
         return estimateRepository.save(estimate);
 
+    }
+
+    public Estimate addPaymentMethod(UUID id, PaymentMethodDTO paymentMethod) {
+        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        estimate.getPaymentMethod().add(new PaymentMethod(paymentMethod));
+        return estimateRepository.save(estimate);
+    }
+
+    public Estimate updatePaymentMethod(UUID id, PaymentMethodDTO paymentMethod) {
+        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
+        PaymentMethod payment = estimate.getPaymentMethod().stream().filter(item -> item.getId().equals(paymentMethod.id())).findFirst().orElseThrow(EstimateNotFoundException::new);
+     
+            payment.setPaymentTitle(paymentMethod.paymentTitle());
+            payment.setPaymentDescription(paymentMethod.paymentDescription());
+       
+        return estimateRepository.save(estimate);
     }
 
     public Estimate addJobDetail (UUID id, JobDetailsDTO data) {
