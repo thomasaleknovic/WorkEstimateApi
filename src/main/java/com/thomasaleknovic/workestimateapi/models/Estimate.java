@@ -5,29 +5,32 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
 import java.math.BigDecimal;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.hibernate.annotations.GenerationTime;
-import org.hibernate.annotations.GeneratorType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -67,12 +70,19 @@ public class Estimate {
 
     private String observation;
 
-    private String paymentMethod;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "payment_method_id")
+    private PaymentMethod paymentMethod;
 
     private BigDecimal totalPrice = BigDecimal.valueOf(0);
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<JobDetails> jobDetails = new ArrayList<>();
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Company company;
+
+
 
     public Estimate(EstimateDTO data) {
         this.estimateName = data.estimateName();

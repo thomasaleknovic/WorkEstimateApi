@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
 import com.thomasaleknovic.workestimateapi.dtos.JobDetailsDTO;
+import com.thomasaleknovic.workestimateapi.dtos.PaymentMethodDTO;
 import com.thomasaleknovic.workestimateapi.models.Estimate;
 import com.thomasaleknovic.workestimateapi.services.EstimateService;
 
@@ -48,6 +49,16 @@ public class EstimateController {
     public ResponseEntity<Estimate> updateEstimate (@PathVariable UUID id, @RequestBody EstimateDTO data) {
         return ResponseEntity.ok(estimateService.updateEstimateInfo(id, data));
     }
+
+    // @PutMapping("/{id}/edit/payment")
+    // public ResponseEntity<Estimate> updatePaymentMethod (@PathVariable UUID id, @RequestBody PaymentMethodDTO data) {
+    //     return ResponseEntity.ok(estimateService.updatePaymentMethod(id, data));
+    // }
+
+    // @PostMapping("/{id}/edit/payment")
+    // public ResponseEntity<Estimate> insertPaymentMethod (@PathVariable UUID id, @RequestBody PaymentMethodDTO data) {
+    //     return ResponseEntity.ok(estimateService.addPaymentMethod(id, data));
+    // }
     
     @PostMapping("/{id}/edit/details")
     public ResponseEntity<Estimate> insertJobDetail (@PathVariable UUID id, @RequestBody JobDetailsDTO data) {
