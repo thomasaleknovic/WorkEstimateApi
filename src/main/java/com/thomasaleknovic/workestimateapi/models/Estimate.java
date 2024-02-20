@@ -1,5 +1,6 @@
 package com.thomasaleknovic.workestimateapi.models;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -45,15 +46,19 @@ public class Estimate {
 
     private int serviceOrder;
 
+    @NotNull
     private String estimateName;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate createdAt = LocalDate.now() ;
 
+    @NotNull
     private String customerName;
 
+    @NotNull
     private String cpf;
+
 
     private String cep;
 
@@ -67,7 +72,7 @@ public class Estimate {
     @Enumerated(EnumType.STRING)
     private List<PaymentMethod> paymentMethod = new ArrayList<>();
 
-    private BigDecimal totalPrice;
+    private BigDecimal totalPrice = BigDecimal.valueOf(0);
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<JobDetails> jobDetails = new ArrayList<>();
@@ -81,7 +86,6 @@ public class Estimate {
         this.phone = data.phone();
         this.observation = data.observation();
         this.paymentMethod = data.paymentMethod();
-        this.totalPrice = data.totalPrice();
         this.jobDetails = data.jobDetails();
     }
 

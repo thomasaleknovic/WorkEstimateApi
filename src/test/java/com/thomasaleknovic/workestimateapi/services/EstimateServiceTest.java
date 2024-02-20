@@ -82,7 +82,7 @@ public class EstimateServiceTest {
         when(estimateRepository.findById(mockEstimateEntity().getEstimateId())).thenReturn(Optional.empty());
 
 
-        assertThrows(ResponseStatusException.class, () -> {
+        assertThrows(EstimateNotFoundException.class, () -> {
             estimateService.findEstimate(mockEstimateEntity().getEstimateId());
         });
 
