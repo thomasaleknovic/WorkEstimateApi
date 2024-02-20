@@ -3,9 +3,12 @@ package com.thomasaleknovic.workestimateapi.utils;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
+import com.thomasaleknovic.workestimateapi.dtos.PaymentMethodDTO;
 import com.thomasaleknovic.workestimateapi.models.Estimate;
+import com.thomasaleknovic.workestimateapi.models.PaymentMethod;
 
 public class MockEstimate {
     
@@ -16,16 +19,17 @@ public class MockEstimate {
    public static String CEP = "91120415";
    public static String ADDRESS = "Rua 1 de janeiro";
    public static String PHONE = "(11) 933124133";
-public static String OBSERVATION = "Observação teste";
+   public static String OBSERVATION = "Observação teste";
+   public static PaymentMethod PAYMENT_METHOD = new PaymentMethod(new PaymentMethodDTO( UUID.randomUUID(), PaymentMethod.PaymentTitle.PIX, "312312312"));
    public static BigDecimal TOTAL_PRICE = new BigDecimal(1000.00);
 
     public static EstimateDTO mockEstimateDTO () {
-        return new EstimateDTO(ESTIMATE_NAME, SERVICE_ORDER, CUSTOMER_NAME, CPF, CEP, ADDRESS, PHONE, OBSERVATION, new ArrayList<>(), TOTAL_PRICE, new ArrayList<>());
+        return new EstimateDTO(ESTIMATE_NAME, SERVICE_ORDER, CUSTOMER_NAME, CPF, CEP, ADDRESS, PHONE, OBSERVATION, PAYMENT_METHOD, TOTAL_PRICE, new ArrayList<>());
     
     }
 
     public static EstimateDTO updatedMockEstimateDTO () {
-        return new EstimateDTO("Orçamento atualizado", SERVICE_ORDER, CUSTOMER_NAME, CPF, CEP, ADDRESS, PHONE, OBSERVATION, new ArrayList<>(), TOTAL_PRICE, new ArrayList<>());
+        return new EstimateDTO("Orçamento atualizado", SERVICE_ORDER, CUSTOMER_NAME, CPF, CEP, ADDRESS, PHONE, OBSERVATION, PAYMENT_METHOD ,TOTAL_PRICE, new ArrayList<>());
     }
 
     public static Estimate mockEstimateEntity (){

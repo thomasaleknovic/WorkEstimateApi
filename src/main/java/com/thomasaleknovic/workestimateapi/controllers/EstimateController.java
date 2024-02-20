@@ -50,15 +50,15 @@ public class EstimateController {
         return ResponseEntity.ok(estimateService.updateEstimateInfo(id, data));
     }
 
-    @PutMapping("/{id}/edit/payment")
-    public ResponseEntity<Estimate> updatePaymentMethod (@PathVariable UUID id, @RequestBody PaymentMethodDTO data) {
-        return ResponseEntity.ok(estimateService.updatePaymentMethod(id, data));
-    }
+    // @PutMapping("/{id}/edit/payment")
+    // public ResponseEntity<Estimate> updatePaymentMethod (@PathVariable UUID id, @RequestBody PaymentMethodDTO data) {
+    //     return ResponseEntity.ok(estimateService.updatePaymentMethod(id, data));
+    // }
 
-    @PostMapping("/{id}/edit/payment")
-    public ResponseEntity<Estimate> insertPaymentMethod (@PathVariable UUID id, @RequestBody PaymentMethodDTO data) {
-        return ResponseEntity.ok(estimateService.addPaymentMethod(id, data));
-    }
+    // @PostMapping("/{id}/edit/payment")
+    // public ResponseEntity<Estimate> insertPaymentMethod (@PathVariable UUID id, @RequestBody PaymentMethodDTO data) {
+    //     return ResponseEntity.ok(estimateService.addPaymentMethod(id, data));
+    // }
     
     @PostMapping("/{id}/edit/details")
     public ResponseEntity<Estimate> insertJobDetail (@PathVariable UUID id, @RequestBody JobDetailsDTO data) {

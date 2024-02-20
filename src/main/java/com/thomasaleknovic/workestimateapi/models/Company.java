@@ -3,32 +3,32 @@ package com.thomasaleknovic.workestimateapi.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import com.thomasaleknovic.workestimateapi.dtos.CompanyDTO;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "companies")
 public class Company {
 
-    public Company(String companyName, String cnpj, String cep, String address, String phoneOne, String phoneTwo, String email, String website, String logo, String description, String socialMedia) {
-        this.companyName = companyName;
-        this.cnpj = cnpj;
-        this.cep = cep;
-        this.address = address;
-        this.phoneOne = phoneOne;
-        this.phoneTwo = phoneTwo;
-        this.email = email;
-        this.website = website;
-        this.logo = logo;
-        this.description = description;
-        this.socialMedia = socialMedia;
+    public Company(CompanyDTO companyDTO) {
+        this.companyName = companyDTO.companyName();
+        this.cnpj = companyDTO.cnpj();
+        this.cep = companyDTO.cep();
+        this.address = companyDTO.address();
+        this.phoneOne = companyDTO.phoneOne();
+        this.phoneTwo = companyDTO.phoneTwo();
+        this.email = companyDTO.email();
+        this.website = companyDTO.website();
+        this.logo = companyDTO.logo();
+        this.description = companyDTO.description();
+        this.socialMedia = companyDTO.socialMedia();
     }
 
     @Id
@@ -63,6 +63,12 @@ public class Company {
     private String description;
 
     private String socialMedia;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "company")
+    private List<Estimate> estimates = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<PaymentMethod> paymentMethod = new ArrayList<>();
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "owner_id")

@@ -17,7 +17,7 @@ public record EstimateDTO(
     @NotNull String address,
     String phone,
     String observation,
-    List<PaymentMethod> paymentMethod,
+    PaymentMethod paymentMethod,
     BigDecimal totalPrice,
     List<JobDetails> jobDetails) {
     
