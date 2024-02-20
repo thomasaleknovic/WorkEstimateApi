@@ -91,21 +91,7 @@ public class EstimateService {
        
     }
 
-    public Estimate addPaymentMethod(UUID id, PaymentMethodDTO paymentMethod) {
-        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
-        estimate.getPaymentMethod().add(new PaymentMethod(paymentMethod));
-        return estimateRepository.save(estimate);
-    }
-
-    public Estimate updatePaymentMethod(UUID id, PaymentMethodDTO paymentMethod) {
-        Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
-        PaymentMethod payment = estimate.getPaymentMethod().stream().filter(item -> item.getId().equals(paymentMethod.id())).findFirst().orElseThrow(EstimateNotFoundException::new);
-     
-            payment.setPaymentTitle(paymentMethod.paymentTitle());
-            payment.setPaymentDescription(paymentMethod.paymentDescription());
-       
-        return estimateRepository.save(estimate);
-    }
+    
 
     public void deleteEstimate(UUID id) {
         Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
