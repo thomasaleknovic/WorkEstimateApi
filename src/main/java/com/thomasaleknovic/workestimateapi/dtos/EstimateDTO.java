@@ -8,6 +8,6 @@ import com.thomasaleknovic.workestimateapi.models.JobDetails;
 import jakarta.validation.constraints.NotNull;
 
 
-public record EstimateDTO(@NotNull String estimateName, int serviceOrder, @NotNull String customerName, String cpf, String cep, @NotNull String address, String phone, String observation, String paymentMethod, BigDecimal totalPrice, List<JobDetails> jobDetails) {
+public record EstimateDTO(@NotNull String estimateName, int serviceOrder, String observation, String paymentMethod, BigDecimal totalPrice, List<JobDetails> jobDetails) {
     
 }

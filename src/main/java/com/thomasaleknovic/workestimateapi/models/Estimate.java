@@ -52,18 +52,6 @@ public class Estimate {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate createdAt = LocalDate.now() ;
 
-    @NotNull
-    private String customerName;
-
-    @NotNull
-    private String cpf;
-
-
-    private String cep;
-
-    private String address;
-
-    private String phone;
 
     private String observation;
 
@@ -76,11 +64,6 @@ public class Estimate {
 
     public Estimate(EstimateDTO data) {
         this.estimateName = data.estimateName();
-        this.customerName = data.customerName();
-        this.cpf = data.cpf();
-        this.cep = data.cep();
-        this.address = data.address();
-        this.phone = data.phone();
         this.observation = data.observation();
         this.paymentMethod = data.paymentMethod();
         this.jobDetails = data.jobDetails();
