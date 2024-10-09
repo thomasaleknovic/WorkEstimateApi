@@ -1,6 +1,7 @@
 package com.thomasaleknovic.workestimateapi.services;
 
 import com.thomasaleknovic.workestimateapi.dtos.CustomerDTO;
+import com.thomasaleknovic.workestimateapi.exceptions.Customer.CustomerNotFoundException;
 import com.thomasaleknovic.workestimateapi.models.Customer;
 import com.thomasaleknovic.workestimateapi.repository.CustomerRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -23,8 +24,7 @@ public class CustomerService {
     }
 
     public Customer findCustomer(UUID id) {
-        return customerRepository.findById(id).orElseThrow(()
-                -> new EntityNotFoundException("Customer not found"));
+        return customerRepository.findById(id).orElseThrow(CustomerNotFoundException::new);
     }
 
     public Customer createCustomer(CustomerDTO data) {
@@ -33,7 +33,7 @@ public class CustomerService {
     }
 
     public Customer updateCustomerInfo(UUID id, CustomerDTO data) {
-        Customer customer = findCustomer(id);
+        Customer customer = customerRepository.findById(id).orElseThrow(CustomerNotFoundException::new);
         customer.setName(data.name());
         customer.setCpf(data.cpf());
         customer.setEmail(data.email());
@@ -48,6 +48,7 @@ public class CustomerService {
     }
 
     public void deleteCustomer(UUID id) {
-        customerRepository.deleteById(id);
+        Customer customer = customerRepository.findById(id).orElseThrow(CustomerNotFoundException::new);
+        customerRepository.deleteById(customer.getCustomerId());
     }
 }

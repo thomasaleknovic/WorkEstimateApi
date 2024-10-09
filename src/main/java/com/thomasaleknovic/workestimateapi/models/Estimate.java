@@ -10,8 +10,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.thomasaleknovic.workestimateapi.dtos.EstimateDTO;
 
-import jakarta.annotation.Generated;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
