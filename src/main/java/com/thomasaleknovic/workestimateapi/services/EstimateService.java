@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
+import com.thomasaleknovic.workestimateapi.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,10 @@ public class EstimateService {
 
     @Autowired
     private EstimateRepository estimateRepository;
+
+    @Autowired
+    private CustomerService customerService;
+
 
  
     @Transactional
@@ -64,7 +69,9 @@ public class EstimateService {
     }
 
     public Estimate createEstimate (EstimateDTO data) {
-        Estimate estimate = new Estimate(data);
+
+        Customer customer = customerService.findCustomer(data.customerId());
+        Estimate estimate = new Estimate(customer, data);
         estimate.setServiceOrder(getNextServiceOrder());
         return estimateRepository.save(estimate);
 

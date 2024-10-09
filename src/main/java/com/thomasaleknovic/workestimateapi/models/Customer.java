@@ -43,8 +43,6 @@ public class Customer {
     @NotNull
     private String country;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Estimate> estimates;
 
 
 public Customer(CustomerDTO data) {
