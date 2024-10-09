@@ -64,7 +64,6 @@ public class AuthenticationController {
             userRepository.save(user);
 
         } catch (Exception e) {
-
             return ResponseEntity.badRequest().build();
         }
         return ResponseEntity.ok().build();

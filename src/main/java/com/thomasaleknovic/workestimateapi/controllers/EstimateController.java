@@ -3,8 +3,6 @@ package com.thomasaleknovic.workestimateapi.controllers;
 import java.util.List;
 import java.util.UUID;
 
-import com.thomasaleknovic.workestimateapi.models.Customer;
-import com.thomasaleknovic.workestimateapi.services.CustomerService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
