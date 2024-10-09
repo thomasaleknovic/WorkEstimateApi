@@ -14,5 +14,6 @@ public record CustomerDTO(
     String city,
     String state,
     String zipCode,
-    String country) {
+    String country,
+    UUID companyId) {
 }

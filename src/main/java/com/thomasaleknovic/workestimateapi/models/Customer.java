@@ -42,7 +42,8 @@ public class Customer {
     private String zipCode;
     @NotNull
     private String country;
-
+    @NotNull
+    private UUID companyId;
 
 
 public Customer(CustomerDTO data) {
@@ -55,7 +56,7 @@ public Customer(CustomerDTO data) {
     this.state = data.state();
     this.zipCode = data.zipCode();
     this.country = data.country();
-
+    this.companyId = data.companyId();
 
     }
 
