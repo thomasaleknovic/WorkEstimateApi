@@ -37,9 +37,6 @@ public class User implements UserDetails {
     @NotNull
     private String email;
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-    private List<Company> companyList = new ArrayList<>();
-
     private UserRole role;
 
     public User(String username, String password, String email, UserRole role) {
