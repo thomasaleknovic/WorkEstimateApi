@@ -33,19 +33,48 @@ public class CustomerService {
     }
 
     public Customer updateCustomerInfo(UUID id, CustomerDTO data) {
-        Customer customer = customerRepository.findById(id).orElseThrow(CustomerNotFoundException::new);
-        customer.setName(data.name());
-        customer.setCpf(data.cpf());
-        customer.setEmail(data.email());
-        customer.setPhone(data.phone());
-        customer.setAddress(data.address());
-        customer.setCity(data.city());
-        customer.setState(data.state());
-        customer.setZipCode(data.zipCode());
-        customer.setCountry(data.country());
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(CustomerNotFoundException::new);
+
+        if (data.name() != null && !data.name().equals(customer.getName())) {
+            customer.setName(data.name());
+        }
+
+        if (data.cpf() != null && !data.cpf().equals(customer.getCpf())) {
+            customer.setCpf(data.cpf());
+        }
+
+        if (data.email() != null && !data.email().equals(customer.getEmail())) {
+            customer.setEmail(data.email());
+        }
+
+        if (data.phone() != null && !data.phone().equals(customer.getPhone())) {
+            customer.setPhone(data.phone());
+        }
+
+        if (data.address() != null && !data.address().equals(customer.getAddress())) {
+            customer.setAddress(data.address());
+        }
+
+        if (data.city() != null && !data.city().equals(customer.getCity())) {
+            customer.setCity(data.city());
+        }
+
+        if (data.state() != null && !data.state().equals(customer.getState())) {
+            customer.setState(data.state());
+        }
+
+        if (data.zipCode() != null && !data.zipCode().equals(customer.getZipCode())) {
+            customer.setZipCode(data.zipCode());
+        }
+
+        if (data.country() != null && !data.country().equals(customer.getCountry())) {
+            customer.setCountry(data.country());
+        }
 
         return customerRepository.save(customer);
     }
+
 
     public void deleteCustomer(UUID id) {
         Customer customer = customerRepository.findById(id).orElseThrow(CustomerNotFoundException::new);
