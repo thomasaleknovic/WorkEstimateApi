@@ -32,4 +32,5 @@ public class AuthorizationService implements UserDetailsService {
     public User findUserById(UUID id) {
         return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
+
 }

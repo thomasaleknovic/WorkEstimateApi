@@ -25,7 +25,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping("api/estimate")
 public class EstimateDownloadController {
 
-     private EstimateService estimateService;
+     private final EstimateService estimateService;
 
         public EstimateDownloadController (EstimateService estimateService) {
             this.estimateService = estimateService;
