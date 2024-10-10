@@ -1,5 +1,6 @@
 package com.thomasaleknovic.workestimateapi.models;
 
+import com.thomasaleknovic.workestimateapi.dtos.CompanyDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -16,20 +17,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "companies")
 public class Company {
-
-    public Company(String companyName, String cnpj, String cep, String address, String phoneOne, String phoneTwo, String email, String website, String logo, String description, String socialMedia) {
-        this.companyName = companyName;
-        this.cnpj = cnpj;
-        this.cep = cep;
-        this.address = address;
-        this.phoneOne = phoneOne;
-        this.phoneTwo = phoneTwo;
-        this.email = email;
-        this.website = website;
-        this.logo = logo;
-        this.description = description;
-        this.socialMedia = socialMedia;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -64,10 +51,25 @@ public class Company {
 
     private String socialMedia;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    @NotNull
+    private UUID ownerId;
 
+
+    public Company(CompanyDTO data) {
+        this.companyName = data.companyName();
+        this.cnpj = data.cnpj();
+        this.cep = data.cep();
+        this.address = data.address();
+        this.phoneOne = data.phoneOne();
+        this.phoneTwo = data.phoneTwo();
+        this.email = data.email();
+        this.website = data.website();
+        this.logo = data.logo();
+        this.description = data.description();
+        this.socialMedia = data.socialMedia();
+        this.ownerId = data.ownerID();
+
+    }
 
 
 

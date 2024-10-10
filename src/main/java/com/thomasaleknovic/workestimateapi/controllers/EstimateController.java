@@ -24,7 +24,7 @@ import com.thomasaleknovic.workestimateapi.services.EstimateService;
 @RequestMapping("api/estimate")
 public class EstimateController {
    
-    private EstimateService estimateService;
+    private final EstimateService estimateService;
 
     public EstimateController (EstimateService estimateService) {
         this.estimateService = estimateService;
