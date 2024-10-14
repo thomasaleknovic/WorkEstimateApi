@@ -1,4 +1,6 @@
 package com.thomasaleknovic.workestimateapi.dtos;
 
-public record LoginResponseDTO(String token) {
+import java.util.UUID;
+
+public record LoginResponseDTO(String username, UUID userId, String token) {
 }
