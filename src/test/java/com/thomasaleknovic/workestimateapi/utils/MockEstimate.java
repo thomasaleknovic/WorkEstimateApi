@@ -21,7 +21,7 @@ public static String OBSERVATION = "Observação teste";
    public static BigDecimal TOTAL_PRICE = new BigDecimal(1000.00);
 
     public static EstimateDTO mockEstimateDTO () {
-        return new EstimateDTO(ESTIMATE_NAME, SERVICE_ORDER, CUSTOMER_NAME, CPF, CEP, ADDRESS, PHONE, OBSERVATION, PAYMENT_METHOD, TOTAL_PRICE, new ArrayList<>());
+        return new EstimateDTO(ESTIMATE_NAME, SERVICE_ORDER, OBSERVATION, PAYMENT_METHOD, TOTAL_PRICE, new ArrayList<>());
     
     }
 

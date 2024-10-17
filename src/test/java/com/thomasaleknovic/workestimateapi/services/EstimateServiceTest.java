@@ -57,9 +57,7 @@ public class EstimateServiceTest {
        List<Estimate> result = estimateService.findAllEstimates();
 
        assertNotNull(result);
-       assertEquals(result.get(0).getCpf() , CPF);
        assertEquals(result.get(0).getEstimateName() , ESTIMATE_NAME);
-       assertEquals(result.get(0).getCustomerName() , CUSTOMER_NAME);
     }
 
     @Test
@@ -70,9 +68,8 @@ public class EstimateServiceTest {
         Estimate result = estimateService.findEstimate(mockEstimateEntity().getEstimateId());
 
         assertNotNull(result);
-        assertEquals(result.getCpf() , CPF);
         assertEquals(result.getEstimateName() , ESTIMATE_NAME);
-        assertEquals(result.getCustomerName() , CUSTOMER_NAME);
+
 
     }
 
@@ -96,7 +93,7 @@ public class EstimateServiceTest {
         Estimate result = estimateService.createEstimate(mockEstimateDTO());
 
         assertNotNull(result);
-        assertEquals(result.getCpf(), CPF);
+        assertEquals(result.getEstimateName(), ESTIMATE_NAME);
     }
 
     // @Test

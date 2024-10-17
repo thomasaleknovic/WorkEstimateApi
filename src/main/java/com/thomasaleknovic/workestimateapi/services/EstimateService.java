@@ -99,9 +99,18 @@ public class EstimateService {
                 item -> item.getId().equals(data.id())).findFirst()
                 .orElseThrow(EstimateNotFoundException::new);
 
-        jobDetails.setQuantity(data.quantity());
-        jobDetails.setUnitPrice(data.unitPrice());
-        jobDetails.setDescription(data.description());
+        if (!data.quantity().equals(jobDetails.getQuantity())) {
+            jobDetails.setQuantity(data.quantity());
+        }
+
+        if (!data.unitPrice().equals(jobDetails.getUnitPrice())) {
+            jobDetails.setUnitPrice(data.unitPrice());
+        }
+
+        if (!data.description().equals(jobDetails.getDescription())) {
+            jobDetails.setDescription(data.description());
+        }
+
         jobDetails.setPrice(BigDecimal.valueOf(data.quantity()).multiply(data.unitPrice()));
         estimate.setTotalPrice(getTotalPrice(estimate));
         return estimateRepository.save(estimate);
@@ -111,9 +120,24 @@ public class EstimateService {
 
     public Estimate updateEstimateInfo(UUID id, EstimateDTO data) {
         Estimate estimate = estimateRepository.findById(id).orElseThrow(EstimateNotFoundException::new);
-        estimate.setEstimateName(data.estimateName());
-        estimate.setPaymentMethod(data.paymentMethod());
-        estimate.setObservation(data.observation());
+        Customer customer = customerService.findCustomer(data.customerId());
+
+        if (!data.estimateName().equals(estimate.getEstimateName())) {
+            estimate.setEstimateName(data.estimateName());
+        }
+
+        if (!data.paymentMethod().equals(estimate.getPaymentMethod())) {
+            estimate.setPaymentMethod(data.paymentMethod());
+        }
+
+        if (data.observation() != null && !data.observation().equals(estimate.getObservation())) {
+            estimate.setObservation(data.observation());
+        }
+
+        if (!estimate.getCustomer().getCustomerId().equals(customer.getCustomerId())) {
+            estimate.setCustomer(customer);
+        }
+
         return estimateRepository.save(estimate);
        
     }

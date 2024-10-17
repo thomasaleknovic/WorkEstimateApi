@@ -1,5 +1,6 @@
 package com.thomasaleknovic.workestimateapi.configs.security;
 
+import com.thomasaleknovic.workestimateapi.exceptions.User.UserNotFoundException;
 import com.thomasaleknovic.workestimateapi.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -33,7 +34,7 @@ public class SecurityFilter extends OncePerRequestFilter {
 
         if (token != null) {
             var username = tokenService.validateToken(token);
-            UserDetails user = userRepository.findByUsername(username);
+            UserDetails user = userRepository.findByUsername(username).orElseThrow(UserNotFoundException::new);
 
             var authentication = new UsernamePasswordAuthenticationToken(
                     user,
