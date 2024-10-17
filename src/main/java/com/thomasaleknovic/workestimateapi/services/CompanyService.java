@@ -52,10 +52,6 @@ public class CompanyService {
             companyToUpdate.setCnpj(data.cnpj());
         }
 
-        if (data.cep() != null && !data.cep().equals(companyToUpdate.getCep())) {
-            companyToUpdate.setCep(data.cep());
-        }
-
         if (data.address() != null && !data.address().equals(companyToUpdate.getAddress())) {
             companyToUpdate.setAddress(data.address());
         }

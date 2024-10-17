@@ -30,10 +30,19 @@ public class Company {
     private String cnpj;
 
     @NotNull
-    private String cep;
+    private String address;
 
     @NotNull
-    private String address;
+    private String city;
+
+    @NotNull
+    private String state;
+
+    @NotNull
+    private String zipCode;
+
+    @NotNull
+    private String country;
 
     @NotNull
     private String phoneOne;
@@ -58,8 +67,11 @@ public class Company {
     public Company(CompanyDTO data) {
         this.companyName = data.companyName();
         this.cnpj = data.cnpj();
-        this.cep = data.cep();
         this.address = data.address();
+        this.city = data.city();
+        this.state = data.state();
+        this.zipCode = data.zipCode();
+        this.country = data.country();
         this.phoneOne = data.phoneOne();
         this.phoneTwo = data.phoneTwo();
         this.email = data.email();
