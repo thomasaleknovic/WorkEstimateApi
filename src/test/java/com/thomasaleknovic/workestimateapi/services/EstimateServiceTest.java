@@ -134,7 +134,6 @@ public class EstimateServiceTest {
         EstimateDTO updateInfo = updatedMockEstimateDTO();
         Estimate resultEstimate = mockEstimateEntity();
         resultEstimate.setEstimateName(updateInfo.estimateName());
-        Customer mockCustomer = mockCustomerEntity();
 
         when(estimateRepository.findById(estimateMock.getEstimateId())).thenReturn(Optional.of(estimateMock));
         when(customerService.findCustomer(updateInfo.customerId())).thenReturn(mockCustomerEntity());
