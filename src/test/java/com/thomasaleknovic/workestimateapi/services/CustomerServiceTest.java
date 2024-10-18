@@ -75,4 +75,20 @@ public class CustomerServiceTest {
         assertNotNull(result);
         assertEquals(mockCustomerEntity().getCpf(), result.getCpf());
     }
+
+    @Test
+    @DisplayName("Should delete a Customer by it's Id successfully.")
+    void testDeleteCustomerSuccess(){
+
+        Customer customer = mockCustomerEntity();
+
+        when(customerRepository.findById(any())).thenReturn(Optional.of(customer));
+
+        customerService.deleteCustomer(mockCustomerEntity().getCustomerId());
+
+        verify(customerRepository, times(1)).deleteById(customer.getCustomerId());
+    }
+
+
+
 }
