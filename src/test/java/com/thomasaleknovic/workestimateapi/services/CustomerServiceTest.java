@@ -1,5 +1,6 @@
 package com.thomasaleknovic.workestimateapi.services;
 
+import com.thomasaleknovic.workestimateapi.dtos.CustomerDTO;
 import com.thomasaleknovic.workestimateapi.exceptions.Customer.CustomerNotFoundException;
 import com.thomasaleknovic.workestimateapi.exceptions.Estimate.EstimateNotFoundException;
 import com.thomasaleknovic.workestimateapi.models.Customer;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @ActiveProfiles("test")
 public class CustomerServiceTest {
@@ -89,6 +91,44 @@ public class CustomerServiceTest {
         verify(customerRepository, times(1)).deleteById(customer.getCustomerId());
     }
 
+    @Test
+    @DisplayName("Should throw an exception trying to delete a Customer that don't exists, by it's Id")
+    void testDeleteCustomerFail(){
+        when(customerRepository.findById(any())).thenReturn(Optional.empty());
 
+        assertThrows(CustomerNotFoundException.class, () -> {
+            customerService.deleteCustomer(mockCustomerEntity().getCustomerId());
+        });
+    }
+
+    @Test
+    @DisplayName("Should update a Customer's name successfully")
+    void testUpdateCustomerSuccess(){
+
+        Customer customer = mockCustomerEntity();
+        CustomerDTO updatedDTO = mockUpdatedCustomerDTO();
+        Customer resultCustomer = mockCustomerEntity();
+        resultCustomer.setName(mockUpdatedCustomerDTO().name());
+
+        when(customerRepository.findById(any())).thenReturn(Optional.of(customer));
+        when(customerRepository.save(any())).thenReturn(resultCustomer);
+
+        Customer result = customerService.updateCustomerInfo(customer.getCustomerId(), updatedDTO);
+
+        assertNotNull(result);
+        assertEquals(mockUpdatedCustomerDTO().name(), result.getName());
+    }
+
+    @Test
+    @DisplayName("Should throw an exception trying to update a Customer's name that don't exists.")
+    void testUpdateCustomerFail(){
+        when(customerRepository.findById(any())).thenReturn(Optional.empty());
+
+        assertThrows(CustomerNotFoundException.class, () -> {
+            customerService.updateCustomerInfo(mockCustomerEntity().getCustomerId(), mockUpdatedCustomerDTO());
+        });
+    }
+
+    
 
 }
