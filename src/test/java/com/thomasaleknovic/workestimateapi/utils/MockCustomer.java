@@ -31,4 +31,9 @@ public class MockCustomer {
         customer.setCustomerId(CUSTOMER_ID);
         return customer;
     }
+
+    public static CustomerDTO mockUpdatedCustomerDTO () {
+        return new CustomerDTO("Kleber", CPF, EMAIL, PHONE, ADDRESS, CITY, STATE, ZIPCODE, COUNTRY, COMPANY_ID);
+
+    }
 }
