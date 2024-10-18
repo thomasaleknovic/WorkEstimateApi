@@ -2,6 +2,7 @@ package com.thomasaleknovic.workestimateapi.services;
 
 import com.thomasaleknovic.workestimateapi.dtos.CustomerDTO;
 import com.thomasaleknovic.workestimateapi.exceptions.Customer.CustomerNotFoundException;
+import com.thomasaleknovic.workestimateapi.models.Company;
 import com.thomasaleknovic.workestimateapi.models.Customer;
 import com.thomasaleknovic.workestimateapi.repository.CustomerRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -15,8 +16,11 @@ public class CustomerService {
 
     private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
+    private final CompanyService companyService;
+
+    public CustomerService(CustomerRepository customerRepository, CompanyService companyService) {
         this.customerRepository = customerRepository;
+        this.companyService = companyService;
     }
 
     public List<Customer> findAllCustomers() {
@@ -28,7 +32,9 @@ public class CustomerService {
     }
 
     public Customer createCustomer(CustomerDTO data) {
-        Customer customer = new Customer(data);
+
+        Company company = companyService.findCompanyById(data.companyId());
+        Customer customer = new Customer(company.getCompanyId(), data);
         return customerRepository.save(customer);
     }
 

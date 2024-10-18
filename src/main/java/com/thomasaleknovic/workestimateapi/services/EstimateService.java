@@ -22,14 +22,17 @@ import jakarta.transaction.Transactional;
 @Service
 public class EstimateService {
 
-    @Autowired
-    private EstimateRepository estimateRepository;
 
-    @Autowired
-    private CustomerService customerService;
+    private final EstimateRepository estimateRepository;
+
+    private final CustomerService customerService;
+
+    public EstimateService(EstimateRepository estimateRepository, CustomerService customerService) {
+        this.estimateRepository = estimateRepository;
+        this.customerService = customerService;
+    }
 
 
- 
     @Transactional
     public int getNextServiceOrder() {
 
@@ -134,7 +137,7 @@ public class EstimateService {
             estimate.setObservation(data.observation());
         }
 
-        if (!estimate.getCustomer().getCustomerId().equals(customer.getCustomerId())) {
+        if (estimate.getCustomer().getCustomerId() != customer.getCustomerId()) {
             estimate.setCustomer(customer);
         }
 
