@@ -1,17 +1,18 @@
 package com.thomasaleknovic.workestimateapi.services;
 
+import static com.thomasaleknovic.workestimateapi.utils.MockCustomer.mockCustomerEntity;
 import static com.thomasaleknovic.workestimateapi.utils.MockEstimate.*;
 import static com.thomasaleknovic.workestimateapi.utils.MockJobDetails.mockJobDetailsDTO;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import java.util.List;
 import java.util.Optional;
 
+import com.thomasaleknovic.workestimateapi.models.Customer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,9 +39,13 @@ public class EstimateServiceTest {
     @Mock
     EstimateRepository estimateRepository;
 
+    @Mock
+    CustomerService customerService;
+
     @InjectMocks
     @Autowired
     EstimateService estimateService;
+
 
     @BeforeEach
     void setUp() {
@@ -89,24 +94,13 @@ public class EstimateServiceTest {
     @DisplayName("Should create a new Estimate.")
     void testCreateEstimateSuccess() {
         when(estimateRepository.save(any())).thenReturn(mockEstimateEntity());
+        when(customerService.findCustomer(any())).thenReturn(mockCustomerEntity());
 
         Estimate result = estimateService.createEstimate(mockEstimateDTO());
 
         assertNotNull(result);
         assertEquals(result.getEstimateName(), ESTIMATE_NAME);
     }
-
-    // @Test
-    // @DisplayName("Should throw a exception when trying to save a new invalid Estimate.")
-    // void testCreateEstimateFail() {
-    //     when(estimateRepository.save(any())).thenReturn(mockEstimateEntity());
-
-    //     Estimate result = estimateService.createEstimate(mockEstimateDTO());
-
-    //     assertThrows(ResponseStatusException.class, () -> {
-    //         estimateService.findEstimate(mockEstimateEntity().getEstimateId());
-    //     });
-    // }
 
     @Test
     @DisplayName("Should delete an Estimate by it's Id successfully")
@@ -136,16 +130,17 @@ public class EstimateServiceTest {
     @Test
     @DisplayName("Should update Estimate's name successfully")
     void testUpdateEstimateInfoSuccess() {
-        Estimate estimate = mockEstimateEntity();
+        Estimate estimateMock = mockEstimateEntity();
         EstimateDTO updateInfo = updatedMockEstimateDTO();
         Estimate resultEstimate = mockEstimateEntity();
         resultEstimate.setEstimateName(updateInfo.estimateName());
-    
-        when(estimateRepository.findById(estimate.getEstimateId())).thenReturn(Optional.of(estimate));
+        Customer mockCustomer = mockCustomerEntity();
+
+        when(estimateRepository.findById(estimateMock.getEstimateId())).thenReturn(Optional.of(estimateMock));
+        when(customerService.findCustomer(updateInfo.customerId())).thenReturn(mockCustomerEntity());
         when(estimateRepository.save(any())).thenReturn(resultEstimate);
 
-
-        Estimate result = estimateService.updateEstimateInfo(estimate.getEstimateId(), updateInfo);
+        Estimate result = estimateService.updateEstimateInfo(estimateMock.getEstimateId(), updateInfo);
 
         assertNotNull(result);
         assertEquals(result.getEstimateName(), updatedMockEstimateDTO().estimateName());
@@ -165,8 +160,6 @@ public class EstimateServiceTest {
 
     }
 
-
-
     @Test
     @DisplayName("Should add job detail successfully on a Estimate.")
     void testAddJobDetail() {
@@ -184,7 +177,6 @@ public class EstimateServiceTest {
 
     }
 
-    
     @Test
     @DisplayName("Should throw an exception trying to add a job detail")
     void testAddJobDetailFail() {
@@ -197,8 +189,6 @@ public class EstimateServiceTest {
 
 
     }
-
-   
 
     @Test
     @DisplayName("Should update a job detail successfully by it's id")
