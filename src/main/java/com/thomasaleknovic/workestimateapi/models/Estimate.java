@@ -63,6 +63,4 @@ public class Estimate {
         this.customer = customer;
     }
 
-
-
 }

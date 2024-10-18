@@ -28,7 +28,6 @@ public class Customer {
     private String name;
     @NotNull
     private String cpf;
-
     private String email;
     @NotNull
     private String phone;
@@ -46,7 +45,7 @@ public class Customer {
     private UUID companyId;
 
 
-public Customer(CustomerDTO data) {
+public Customer(UUID companyId, CustomerDTO data) {
     this.name = data.name();
     this.cpf = data.cpf();
     this.email = data.email();
@@ -56,7 +55,7 @@ public Customer(CustomerDTO data) {
     this.state = data.state();
     this.zipCode = data.zipCode();
     this.country = data.country();
-    this.companyId = data.companyId();
+    this.companyId = companyId;
 
     }
 
